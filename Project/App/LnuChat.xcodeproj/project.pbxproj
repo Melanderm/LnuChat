@@ -31,6 +31,8 @@
 		738598281CABCC100089FB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738598261CABCC100089FB26 /* LaunchScreen.storyboard */; };
 		738598331CABCC100089FB26 /* LnuChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 738598321CABCC100089FB26 /* LnuChatTests.m */; };
 		7385983E1CABCC100089FB26 /* LnuChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385983D1CABCC100089FB26 /* LnuChatUITests.m */; };
+		73D435BC1CAC884F00785AAF /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D435BB1CAC884F00785AAF /* Login.m */; };
+		73D435C01CAC889700785AAF /* Design.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D435BF1CAC889700785AAF /* Design.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		738598391CABCC100089FB26 /* LnuChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LnuChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7385983D1CABCC100089FB26 /* LnuChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LnuChatUITests.m; sourceTree = "<group>"; };
 		7385983F1CABCC100089FB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73D435BA1CAC884F00785AAF /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
+		73D435BB1CAC884F00785AAF /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
+		73D435BE1CAC889700785AAF /* Design.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Design.h; sourceTree = "<group>"; };
+		73D435BF1CAC889700785AAF /* Design.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Design.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,8 @@
 		738598171CABCC100089FB26 /* LnuChat */ = {
 			isa = PBXGroup;
 			children = (
+				73D435BD1CAC888700785AAF /* Extras */,
+				73D435B91CAC883D00785AAF /* User */,
 				7385981B1CABCC100089FB26 /* AppDelegate.h */,
 				7385981C1CABCC100089FB26 /* AppDelegate.m */,
 				7385981E1CABCC100089FB26 /* ViewController.h */,
@@ -210,6 +218,24 @@
 				7385983F1CABCC100089FB26 /* Info.plist */,
 			);
 			path = LnuChatUITests;
+			sourceTree = "<group>";
+		};
+		73D435B91CAC883D00785AAF /* User */ = {
+			isa = PBXGroup;
+			children = (
+				73D435BA1CAC884F00785AAF /* Login.h */,
+				73D435BB1CAC884F00785AAF /* Login.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		73D435BD1CAC888700785AAF /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				73D435BE1CAC889700785AAF /* Design.h */,
+				73D435BF1CAC889700785AAF /* Design.m */,
+			);
+			name = Extras;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +371,8 @@
 				738598201CABCC100089FB26 /* ViewController.m in Sources */,
 				7385981D1CABCC100089FB26 /* AppDelegate.m in Sources */,
 				7385981A1CABCC100089FB26 /* main.m in Sources */,
+				73D435BC1CAC884F00785AAF /* Login.m in Sources */,
+				73D435C01CAC889700785AAF /* Design.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

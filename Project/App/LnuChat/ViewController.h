@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "Login.h"
+#import "Design.h"
+
 
 @interface ViewController : UIViewController
 

@@ -16,7 +16,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    /*
+     Setting up connection to parse database
+     */
+    [Parse setApplicationId:@"xY13D8p07QRUgyUhJZhGFp35YDknSMae45DTZWRd"
+                  clientKey:@"Xhx6hXi141WRkFFnQuOW6rWk8OkUSPtBTTBVBvhu"];
+    [PFUser enableRevocableSessionInBackground];
+    
+    
     return YES;
 }
 
