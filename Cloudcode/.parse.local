@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Lnu": {
+      "applicationId": "xY13D8p07QRUgyUhJZhGFp35YDknSMae45DTZWRd"
+    },
+    "_default": {
+      "link": "Lnu"
+    }
+  }
+}
