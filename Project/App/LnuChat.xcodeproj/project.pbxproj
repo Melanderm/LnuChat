@@ -31,6 +31,7 @@
 		738598281CABCC100089FB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738598261CABCC100089FB26 /* LaunchScreen.storyboard */; };
 		738598331CABCC100089FB26 /* LnuChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 738598321CABCC100089FB26 /* LnuChatTests.m */; };
 		7385983E1CABCC100089FB26 /* LnuChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385983D1CABCC100089FB26 /* LnuChatUITests.m */; };
+		73A0ABEE1CACFF53008D86B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73A0ABF01CACFF53008D86B2 /* Localizable.strings */; };
 		73D435BC1CAC884F00785AAF /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D435BB1CAC884F00785AAF /* Login.m */; };
 		73D435C01CAC889700785AAF /* Design.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D435BF1CAC889700785AAF /* Design.m */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		738598391CABCC100089FB26 /* LnuChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LnuChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7385983D1CABCC100089FB26 /* LnuChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LnuChatUITests.m; sourceTree = "<group>"; };
 		7385983F1CABCC100089FB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73A0ABEF1CACFF53008D86B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73D435BA1CAC884F00785AAF /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
 		73D435BB1CAC884F00785AAF /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
 		73D435BE1CAC889700785AAF /* Design.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Design.h; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				73D435BE1CAC889700785AAF /* Design.h */,
 				73D435BF1CAC889700785AAF /* Design.m */,
+				73A0ABF01CACFF53008D86B2 /* Localizable.strings */,
 			);
 			name = Extras;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = 7385980C1CABCC100089FB26;
 			productRefGroup = 738598161CABCC100089FB26 /* Products */;
@@ -342,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				738598281CABCC100089FB26 /* LaunchScreen.storyboard in Resources */,
+				73A0ABEE1CACFF53008D86B2 /* Localizable.strings in Resources */,
 				738598251CABCC100089FB26 /* Assets.xcassets in Resources */,
 				738598231CABCC100089FB26 /* Main.storyboard in Resources */,
 			);
@@ -422,6 +427,14 @@
 				738598271CABCC100089FB26 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		73A0ABF01CACFF53008D86B2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73A0ABEF1CACFF53008D86B2 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

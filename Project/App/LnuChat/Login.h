@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "design.h"
 
-@interface Login : UIViewController
+@interface Login : UIViewController <UITextFieldDelegate> {
+    
+    UITextField *username;
+    UITextField *password;
+    UIButton *login;
+    UIButton *signup;
+}
+
 
 @end
