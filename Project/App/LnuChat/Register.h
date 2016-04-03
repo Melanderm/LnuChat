@@ -1,5 +1,5 @@
 //
-//  Login.h
+//  Register.h
 //  LnuChat
 //
 //  Created by Mikael Melander on 2016-03-31.
@@ -9,17 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "Design.h"
-#import "Register.h"
+#import "License.h"
 #import "SVProgressHUD.h"
-#import "ChooseName.h"
-#import "NewPassword.h"
 
-@interface Login : UIViewController <UITextFieldDelegate> {
-    
+@interface Register : UIViewController <UITextFieldDelegate> {
     UITextField *username;
-    UITextField *password;
-    UIButton *login;
-    UIButton *signup;
+    UITextField *reenter;
+    UIButton *regist;
+    
+    UILabel *info;
 }
 
 

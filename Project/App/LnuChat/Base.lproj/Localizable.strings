@@ -5,3 +5,11 @@
   Created by Mikael Melander on 2016-03-31.
   Copyright © 2016 mm222ev. All rights reserved.
 */
+"NAME" = "LnuChat";
+"USERNAME" = "Email";
+"PASSWORD" = "Lösenord";
+"LOGIN" = "Logga in";
+"REGISTER" = "Registrera";
+
+"REUSERNAME" = "Skriv in email igen";
+"REGISTERINFO" = "Endast LNU email adresser går att använda";
