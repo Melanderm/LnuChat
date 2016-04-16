@@ -12,6 +12,8 @@
 #import "Design.h"
 #import "ErrorHandler.h"
 #import "TopicsCell.h"
+#import "Room.h"
+#import "Settings.h"
 
 
 @interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {

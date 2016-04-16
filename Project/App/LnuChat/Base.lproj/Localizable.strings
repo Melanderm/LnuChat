@@ -1,15 +1,84 @@
-/* 
-  Localizable.strings
-  LnuChat
-
-  Created by Mikael Melander on 2016-03-31.
-  Copyright © 2016 mm222ev. All rights reserved.
-*/
-"NAME" = "LnuChat";
+/*
+ SWEDISH
+ Localizable.strings
+ lnuchat
+ 
+ Created by Mikael Melander on 2016-03-31.
+ Copyright © 2016 mm222ev. All rights reserved.
+ */
 "USERNAME" = "Email";
+"REUSERNAME" = "Skriv in email igen";
 "PASSWORD" = "Lösenord";
 "LOGIN" = "Logga in";
 "REGISTER" = "Registrera";
+"LOGINFAILED" = "Inloggning misslyckades";
+"REGISTERINFO" = "Bara LNU mail adresser går att använda";
+"MENUHEADER" = "Vad vill du göra?";
+"CANCEL" = "Avbryt";
+"LOGOUT" = "Logga ut";
+"LOGGEDINAS" = "Inloggad som:";
+"RIGHTNAVBARBUTTON" = "Skapa rum";
+"USERCREATEDSUCESS" = "Kontot har blivit skapat, kolla din email";
+"CHOOSENAME" = "Ange namn";
+"FIRSTNAME" = "Förnamn";
+"LASTNAME" = "Efternamn";
+"CONTINUE" = "Fortsätt";
+"NAMEINFO" = "Fyll i för- och efternamn";
+"NAMESAVED" = "Namnet har blivit sparat";
+"REENTERPASSWORD" = "Repetera lösenordet";
+"PASSWORDINFO" = "Ditt konto är inställt för lösenordsbyte. \nLösenordet måste vara minst 8 tecken";
+"PASSWORDCOULDNOTCHANGE" = "Något gick fel, kunde ej byta lösenord.";
+"PASSWORDSAVED" = "Lösenordet är nu bytt";
+"NEWPASSWORD" = "Nytt lösenord";
+"PASSWORDSDONTMATCH" = "Lösenorden matchar inte";
+"SURELOGOUT" = "Är du säker på att du vill logga ut?";
 
-"REUSERNAME" = "Skriv in email igen";
-"REGISTERINFO" = "Endast LNU email adresser går att använda";
+"ROOM" = "Rum";
+"ERROR" = "Någonting gick fel :(";
+"SETTINGS" = "Inställningar";
+"ROOMLEFTNAV" = "Upp";
+"MESSAGE" = "Skriv ett inlägg...";
+"POST" = "Skicka";
+"BETHEFIRST" = "Här var de tomt :( Bli den första att skriva ;)";
+"COULDNOTSENDMESSAGE" = "Kunde inte skicka meddelande :(";
+
+
+//DATE
+"NOW" = "Nu";
+"5min" = "Mindre än 5 min sedan";
+"10min" = "Mindre än 10 min sedan";
+"30min" = "Mindre än 30 min sedan";
+"1h" = "Mindre än 1h sedan";
+"2h" = "Mindre än 2h sedan";
+"3h" = "Mindre än 3h sedan";
+
+"EDIT" = "Spara";
+"EDITPOST" = "Ändra";
+"EDITED" = "Ändrad";
+"DELETEPOST" = "Ta bort";
+"DELETEPOSTSURE" = "Är du säker att du vill ta bort denna post?";
+
+"CHANGEIMAGE" = "Byt profilbild";
+"UPLOADIMAGE" = "Ladda upp profilbild";
+"IMAGEDETALED" = "Du kan ladda upp en egen profilbild, eller byta din om du redan har en";
+"CHANGEPW" = "Byt lösenord";
+"CHANGEPWDETAILED" = "Du får möjligheten att byta till ett nytt lösenord";
+"CHANGENAME" = "Byt visningsnamn";
+"CHANGENAMEDETAILED" = "Du får möjligheten att byta ditt visningsnamn. För-/Efternamn";
+"LOGOUTDETAILED" = "Du loggas ut från appen och all cachad data resnas.";
+
+"PUSHNOTIS" = "Notis inställningar";
+"PUSHNOTISDETAILED" = "Ställ in inställningarna för pushnotiser";
+
+"IMAGESAVED" = "Bilden sparad";
+
+"CREATE" = "Skapa";
+
+
+
+
+
+
+
+
+

@@ -23,6 +23,18 @@
 		73302BD21CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCC1CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework */; };
 		73302BD31CABDDF8006AEE7C /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCD1CABDDF8006AEE7C /* ParseTwitterUtils.framework */; };
 		73302BD41CABDDF8006AEE7C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCE1CABDDF8006AEE7C /* ParseUI.framework */; };
+		7344097C1CC2D71F0028F650 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344097B1CC2D71F0028F650 /* Settings.m */; };
+		734409851CC2D73C0028F650 /* DetailedRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344097E1CC2D73C0028F650 /* DetailedRoomCell.m */; };
+		734409861CC2D73C0028F650 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 734409801CC2D73C0028F650 /* ChatCell.m */; };
+		734409871CC2D73C0028F650 /* SelfChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 734409821CC2D73C0028F650 /* SelfChatCell.m */; };
+		734409881CC2D73C0028F650 /* SettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 734409841CC2D73C0028F650 /* SettingsCell.m */; };
+		7344098B1CC2D7490028F650 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344098A1CC2D7490028F650 /* Room.m */; };
+		734409901CC2D7850028F650 /* DateChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344098D1CC2D7850028F650 /* DateChecker.m */; };
+		734409911CC2D7850028F650 /* ExtraFucntions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344098F1CC2D7850028F650 /* ExtraFucntions.m */; };
+		734409991CC2D7BD0028F650 /* _README.md in Sources */ = {isa = PBXBuildFile; fileRef = 734409931CC2D7BD0028F650 /* _README.md */; };
+		7344099A1CC2D7BD0028F650 /* _LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 734409941CC2D7BD0028F650 /* _LICENSE.txt */; };
+		7344099B1CC2D7BD0028F650 /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 734409961CC2D7BD0028F650 /* HPGrowingTextView.m */; };
+		7344099C1CC2D7BD0028F650 /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 734409981CC2D7BD0028F650 /* HPTextViewInternal.m */; };
 		736173DA1CBD2CCC00B93907 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 736173D91CBD2CCC00B93907 /* ErrorHandler.m */; };
 		736173DD1CBD2D5E00B93907 /* TopicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 736173DC1CBD2D5E00B93907 /* TopicsCell.m */; };
 		736173E11CBD2DB900B93907 /* UIColorExpanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 736173E01CBD2DB900B93907 /* UIColorExpanded.m */; };
@@ -89,6 +101,28 @@
 		73302BCC1CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		73302BCD1CABDDF8006AEE7C /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseTwitterUtils.framework; sourceTree = "<group>"; };
 		73302BCE1CABDDF8006AEE7C /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		7344097A1CC2D71F0028F650 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		7344097B1CC2D71F0028F650 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		7344097D1CC2D73C0028F650 /* DetailedRoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedRoomCell.h; sourceTree = "<group>"; };
+		7344097E1CC2D73C0028F650 /* DetailedRoomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedRoomCell.m; sourceTree = "<group>"; };
+		7344097F1CC2D73C0028F650 /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		734409801CC2D73C0028F650 /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		734409811CC2D73C0028F650 /* SelfChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfChatCell.h; sourceTree = "<group>"; };
+		734409821CC2D73C0028F650 /* SelfChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfChatCell.m; sourceTree = "<group>"; };
+		734409831CC2D73C0028F650 /* SettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCell.h; sourceTree = "<group>"; };
+		734409841CC2D73C0028F650 /* SettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCell.m; sourceTree = "<group>"; };
+		734409891CC2D7490028F650 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		7344098A1CC2D7490028F650 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		7344098C1CC2D7850028F650 /* DateChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateChecker.h; sourceTree = "<group>"; };
+		7344098D1CC2D7850028F650 /* DateChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateChecker.m; sourceTree = "<group>"; };
+		7344098E1CC2D7850028F650 /* ExtraFucntions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraFucntions.h; sourceTree = "<group>"; };
+		7344098F1CC2D7850028F650 /* ExtraFucntions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraFucntions.m; sourceTree = "<group>"; };
+		734409931CC2D7BD0028F650 /* _README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = _README.md; sourceTree = "<group>"; };
+		734409941CC2D7BD0028F650 /* _LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _LICENSE.txt; sourceTree = "<group>"; };
+		734409951CC2D7BD0028F650 /* HPGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPGrowingTextView.h; sourceTree = "<group>"; };
+		734409961CC2D7BD0028F650 /* HPGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPGrowingTextView.m; sourceTree = "<group>"; };
+		734409971CC2D7BD0028F650 /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
+		734409981CC2D7BD0028F650 /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
 		736173D81CBD2CCC00B93907 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHandler.h; sourceTree = "<group>"; };
 		736173D91CBD2CCC00B93907 /* ErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorHandler.m; sourceTree = "<group>"; };
 		736173DB1CBD2D5E00B93907 /* TopicsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicsCell.h; sourceTree = "<group>"; };
@@ -206,9 +240,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		734409921CC2D7B30028F650 /* text */ = {
+			isa = PBXGroup;
+			children = (
+				734409931CC2D7BD0028F650 /* _README.md */,
+				734409941CC2D7BD0028F650 /* _LICENSE.txt */,
+				734409951CC2D7BD0028F650 /* HPGrowingTextView.h */,
+				734409961CC2D7BD0028F650 /* HPGrowingTextView.m */,
+				734409971CC2D7BD0028F650 /* HPTextViewInternal.h */,
+				734409981CC2D7BD0028F650 /* HPTextViewInternal.m */,
+			);
+			name = text;
+			sourceTree = "<group>";
+		};
 		736173DE1CBD2D6500B93907 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				7344097D1CC2D73C0028F650 /* DetailedRoomCell.h */,
+				7344097E1CC2D73C0028F650 /* DetailedRoomCell.m */,
+				7344097F1CC2D73C0028F650 /* ChatCell.h */,
+				734409801CC2D73C0028F650 /* ChatCell.m */,
+				734409811CC2D73C0028F650 /* SelfChatCell.h */,
+				734409821CC2D73C0028F650 /* SelfChatCell.m */,
+				734409831CC2D73C0028F650 /* SettingsCell.h */,
+				734409841CC2D73C0028F650 /* SettingsCell.m */,
 				736173DB1CBD2D5E00B93907 /* TopicsCell.h */,
 				736173DC1CBD2D5E00B93907 /* TopicsCell.m */,
 			);
@@ -261,6 +316,8 @@
 				7385981C1CABCC100089FB26 /* AppDelegate.m */,
 				7385981E1CABCC100089FB26 /* ViewController.h */,
 				7385981F1CABCC100089FB26 /* ViewController.m */,
+				734409891CC2D7490028F650 /* Room.h */,
+				7344098A1CC2D7490028F650 /* Room.m */,
 				738598211CABCC100089FB26 /* Main.storyboard */,
 				738598241CABCC100089FB26 /* Assets.xcassets */,
 				738598261CABCC100089FB26 /* LaunchScreen.storyboard */,
@@ -273,6 +330,7 @@
 		738598181CABCC100089FB26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				734409921CC2D7B30028F650 /* text */,
 				73F16E3D1CB1ABBC0036DF61 /* SVProgressHud */,
 				738598191CABCC100089FB26 /* main.m */,
 			);
@@ -310,6 +368,8 @@
 				73F16E501CB1AC3B0036DF61 /* NewPassword.m */,
 				73F16E511CB1AC3B0036DF61 /* License.h */,
 				73F16E521CB1AC3B0036DF61 /* License.m */,
+				7344097A1CC2D71F0028F650 /* Settings.h */,
+				7344097B1CC2D71F0028F650 /* Settings.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -324,6 +384,10 @@
 				736173D91CBD2CCC00B93907 /* ErrorHandler.m */,
 				736173DF1CBD2DB900B93907 /* UIColorExpanded.h */,
 				736173E01CBD2DB900B93907 /* UIColorExpanded.m */,
+				7344098C1CC2D7850028F650 /* DateChecker.h */,
+				7344098D1CC2D7850028F650 /* DateChecker.m */,
+				7344098E1CC2D7850028F650 /* ExtraFucntions.h */,
+				7344098F1CC2D7850028F650 /* ExtraFucntions.m */,
 			);
 			name = Extras;
 			sourceTree = "<group>";
@@ -460,6 +524,7 @@
 				736173E91CBD2E6C00B93907 /* 76.png in Resources */,
 				736173EE1CBD2E6C00B93907 /* menu@3x.png in Resources */,
 				738598231CABCC100089FB26 /* Main.storyboard in Resources */,
+				7344099A1CC2D7BD0028F650 /* _LICENSE.txt in Resources */,
 				736173F01CBD2E6F00B93907 /* ImagesFrom in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,15 +551,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				738598201CABCC100089FB26 /* ViewController.m in Sources */,
+				734409871CC2D73C0028F650 /* SelfChatCell.m in Sources */,
 				73F16E4B1CB1ABDB0036DF61 /* SVRadialGradientLayer.m in Sources */,
+				734409901CC2D7850028F650 /* DateChecker.m in Sources */,
 				73F16E4A1CB1ABDB0036DF61 /* SVProgressHUD.m in Sources */,
+				734409861CC2D73C0028F650 /* ChatCell.m in Sources */,
 				73F16E541CB1AC3B0036DF61 /* License.m in Sources */,
 				7385981D1CABCC100089FB26 /* AppDelegate.m in Sources */,
 				736173E11CBD2DB900B93907 /* UIColorExpanded.m in Sources */,
+				7344097C1CC2D71F0028F650 /* Settings.m in Sources */,
+				734409851CC2D73C0028F650 /* DetailedRoomCell.m in Sources */,
+				7344099B1CC2D7BD0028F650 /* HPGrowingTextView.m in Sources */,
 				736173DA1CBD2CCC00B93907 /* ErrorHandler.m in Sources */,
 				73A0ABF31CAD000B008D86B2 /* Register.m in Sources */,
+				7344098B1CC2D7490028F650 /* Room.m in Sources */,
+				734409991CC2D7BD0028F650 /* _README.md in Sources */,
 				73F16E531CB1AC3B0036DF61 /* NewPassword.m in Sources */,
 				73F16E4E1CB1AC360036DF61 /* ChooseName.m in Sources */,
+				7344099C1CC2D7BD0028F650 /* HPTextViewInternal.m in Sources */,
+				734409911CC2D7850028F650 /* ExtraFucntions.m in Sources */,
+				734409881CC2D73C0028F650 /* SettingsCell.m in Sources */,
 				7385981A1CABCC100089FB26 /* main.m in Sources */,
 				73D435BC1CAC884F00785AAF /* Login.m in Sources */,
 				736173DD1CBD2D5E00B93907 /* TopicsCell.m in Sources */,

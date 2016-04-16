@@ -48,8 +48,15 @@
     self.table.alpha = 0;
     [self.table setContentInset:UIEdgeInsetsMake(0, 0, 50, 0)];
     [self.view addSubview:self.table];
+    
     [TopicsCell setTableViewWidth:self.view.frame.size.width];
-
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 20 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self changingTitleLabel];
+    });
+    
+    
     refreshController = [[UIRefreshControl alloc] init];
     [refreshController addTarget:self action:@selector(queryRooms)
                 forControlEvents:UIControlEventValueChanged];
@@ -58,7 +65,35 @@
     
     
     [[PFUser currentUser] fetchInBackground]; //Updates user information
-
+}
+/*
+ Animates Navigation TitleView
+ */
+-(void)changingTitleLabel {
+    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+    [UIView animateWithDuration:0.5
+                          delay:0.0f
+                        options: UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         titleView.alpha = 0;
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         if ([titleView.text isEqualToString:@"LnuChat"]) {
+                             [self setTitle:NSLocalizedString(@"ROOM", @"Room")];
+                         } else {
+                             [self setTitle:@"LnuChat"];
+                         }
+                         [UIView beginAnimations:nil context:nil];
+                         [UIView setAnimationDuration:0.5];
+                         [UIView setAnimationDelay:0];
+                         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+                         titleView.alpha = 1;
+                         [UIView commitAnimations];
+                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 20 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                             [self changingTitleLabel];
+                         });
+                     }];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -78,6 +113,7 @@
         [self queryRooms];
     }
 }
+
 
 -(void)initialViewLoad {
     [self.table reloadData];
@@ -130,7 +166,6 @@
     
 }
 
-
 -(void)leftMenuButton {
     NSString *message;
     if ([ErrorHandler hasAdminRights]) {
@@ -150,7 +185,9 @@
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action)
                                {
-                    
+                                   Settings *vc = [[Settings alloc] init];
+                                   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                                   [self presentViewController:nav animated:YES completion:nil];
                                    
                                }];
     
@@ -299,6 +336,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    object = [tableArray objectAtIndex:indexPath.row];
+    Room *viewController = [[Room alloc] init];
+    viewController.Roomobject = object;
+    [self.navigationController pushViewController:viewController animated:YES];
     
 }
 
