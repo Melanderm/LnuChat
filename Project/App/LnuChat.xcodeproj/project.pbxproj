@@ -55,6 +55,7 @@
 		7385983E1CABCC100089FB26 /* LnuChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385983D1CABCC100089FB26 /* LnuChatUITests.m */; };
 		73A0ABF31CAD000B008D86B2 /* Register.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A0ABF21CAD000B008D86B2 /* Register.m */; };
 		73A0ABF61CAD0107008D86B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73A0ABF81CAD0107008D86B2 /* Localizable.strings */; };
+		73B6A77B1CC40293002E4DC6 /* cross@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B6A77A1CC40293002E4DC6 /* cross@3x.png */; };
 		73D435BC1CAC884F00785AAF /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D435BB1CAC884F00785AAF /* Login.m */; };
 		73D435C01CAC889700785AAF /* Design.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D435BF1CAC889700785AAF /* Design.m */; };
 		73F16E471CB1ABDB0036DF61 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 73F16E3E1CB1ABDB0036DF61 /* LICENSE.txt */; };
@@ -155,6 +156,7 @@
 		73A0ABF11CAD000B008D86B2 /* Register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Register.h; sourceTree = "<group>"; };
 		73A0ABF21CAD000B008D86B2 /* Register.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Register.m; sourceTree = "<group>"; };
 		73A0ABF71CAD0107008D86B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73B6A77A1CC40293002E4DC6 /* cross@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@3x.png"; sourceTree = "<group>"; };
 		73D435BA1CAC884F00785AAF /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
 		73D435BB1CAC884F00785AAF /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
 		73D435BE1CAC889700785AAF /* Design.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Design.h; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				736173E51CBD2E6C00B93907 /* 152.png */,
 				736173E61CBD2E6C00B93907 /* 167.png */,
 				736173E71CBD2E6C00B93907 /* 180.png */,
+				73B6A77A1CC40293002E4DC6 /* cross@3x.png */,
 				736173E81CBD2E6C00B93907 /* menu@3x.png */,
 			);
 			name = Images;
@@ -517,6 +520,7 @@
 				736173EC1CBD2E6C00B93907 /* 167.png in Resources */,
 				73F16E491CB1ABDB0036DF61 /* SVProgressHUD.bundle in Resources */,
 				73A0ABF61CAD0107008D86B2 /* Localizable.strings in Resources */,
+				73B6A77B1CC40293002E4DC6 /* cross@3x.png in Resources */,
 				736173ED1CBD2E6C00B93907 /* 180.png in Resources */,
 				738598251CABCC100089FB26 /* Assets.xcassets in Resources */,
 				73F16E471CB1ABDB0036DF61 /* LICENSE.txt in Resources */,

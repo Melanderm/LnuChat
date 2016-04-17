@@ -167,7 +167,7 @@
 
 
 - (BOOL)validateName:(NSString *)name {
-    NSString *emailRegex = @"^[A-Z][-a-zA-Z]+$";
+    NSString *emailRegex = @"^[A-ZÅÄÖ][-a-zåäö]+$";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:name];
 }
