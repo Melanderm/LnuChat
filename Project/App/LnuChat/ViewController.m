@@ -367,7 +367,12 @@
                              
                              
                              [SVProgressHUD show];
-                             [self CreateRoom:[alert textFields].firstObject.text :[alert textFields].lastObject.text];
+                             if ([alert textFields].firstObject.text.length > 0 && [alert textFields].lastObject.text.length > 0) {
+                                 [self CreateRoom:[alert textFields].firstObject.text :[alert textFields].lastObject.text];
+                             } else {
+                                 [SVProgressHUD showErrorWithStatus:@"Fälten får inte vara tomma."];
+                             }
+                             
                              
                              
                          }];

@@ -738,6 +738,7 @@
     } else
         textView.text = [[@"" stringByAppendingString:notification.userInfo[@"User"]] stringByAppendingString:@" "];
     
+    
     [UsersTagedArray addObject:notification.userInfo[@"Username"]];
     [self removeTagView];
     
@@ -746,7 +747,8 @@
 // Reciving the push message. Getting the post object id and querying and fetches only that object and refreshes the table.
 -(void)fetchPushedMessage:(NSNotification *)notification {
     NSLog(@"Push info: %@", notification.userInfo);
-    if ([notification.userInfo[@"objectId"] isEqualToString:_Roomobject.objectId] && notification.userInfo[@"TaggedUsers"] == nil) {
+    
+    if ([notification.userInfo[@"objectId"] isEqualToString:_Roomobject.objectId] && [notification.userInfo[@"tag"] isEqualToString:@"update"]) {
     NSLog(@"Acted on push");
     NSString *Id = notification.userInfo[@"chatId"];
     PFQuery *query = [PFQuery queryWithClassName:@"Conversations"];
@@ -766,6 +768,10 @@
         
     }];
     }
+    
+    else if ([notification.userInfo[@"tag"] isEqualToString:@"mentioned"])
+        [SVProgressHUD showInfoWithStatus:notification.userInfo[@"message"]];
+    
 }
 
 // Getting the @Tag string and querying users that matches it then showing result to the user.

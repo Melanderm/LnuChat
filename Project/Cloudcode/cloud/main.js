@@ -171,7 +171,8 @@ Parse.Cloud.afterSave("Conversations", function(request) {
         where: query,
         data: {
             chatId: request.object.id,
-            objectId: request.object.get("ChatRoom").id
+            objectId: request.object.get("ChatRoom").id,
+            tag: "update"
         }
     }, {
         success: function () {
@@ -187,17 +188,19 @@ Parse.Cloud.afterSave("Conversations", function(request) {
         var query2 = new Parse.Query(Parse.Installation);
 
         //Dont want the author to get its on message, because its already added locally
-      //  query2.notEqualTo("Username", Parse.User.current().get("username"));
+        query2.notEqualTo("Username", Parse.User.current().get("username"));
         query2.containedIn("Username", request.object.get("TaggedUsers"));
 
         Parse.Push.send({
             where: query2,
             data: {
-                alert: Parse.User.current().get("name") +" nämde dig i en post",
+                alert: Parse.User.current().get("name")+ ": " + request.object.get("Message"),
+                message: Parse.User.current().get("name")+ ": " + request.object.get("Message"),
                 chatId: request.object.id,
                 objectId: request.object.get("ChatRoom").id,
                 badge: "Increment",
-                sound: "cheering.caf"
+                sound: "cheering.caf",
+                tag: "mentioned"
             }
         }, {
             success: function () {

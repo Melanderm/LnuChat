@@ -33,7 +33,6 @@
     [application registerForRemoteNotifications];
     
     
-    
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     
@@ -70,8 +69,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     if (currentInstallation.badge != 0) {
-        
-        
         currentInstallation.badge = 0;
         [currentInstallation saveEventually];
     }
@@ -86,11 +83,45 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
         // The application was just brought from the background to the foreground,
         // so we consider the app as having been "opened by a push notification."
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+         }
+    
+    
+    
+    if ([userInfo[@"tag"] isEqualToString:@"mentioned"]) {
+        Room *vc = [[Room alloc] init];
+        PFQuery *query = [PFQuery queryWithClassName:@"ChatRooms"];
+        [query whereKey:@"objectId" equalTo:userInfo[@"objectId"]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *object, NSError *error) {
+            if (!error) {
+                PFObject *obj = [object objectAtIndex:0];
+                vc.Roomobject = obj;
+                
+                UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+                [navigationController pushViewController:vc animated:YES];
+                
+                
+                
+            }
+        }];
+
     }
+    
+        
+
+                                     
+   
+    
+        
+    
+   
 }
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"content---%@", token);
     
     PFInstallation *installation = [PFInstallation currentInstallation];
     [installation setDeviceTokenFromData:deviceToken];
@@ -100,6 +131,20 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"Did get push with data: %@", [userInfo objectForKey:@"objectId"]);
     completionHandler(UIBackgroundFetchResultNewData);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidRecivePush" object:nil userInfo:userInfo];
+    
+    if ([userInfo[@"tag"] isEqualToString:@"mentioned"]) {
+    _objId = userInfo[@"objectId"];
+    NSString *cancelTitle = @"Stäng";
+    NSString *showTitle = @"Visa";
+    NSString *message = [NSString stringWithFormat:@"%@", userInfo[@"message"]];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Notis"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:cancelTitle
+                                              otherButtonTitles:showTitle, nil];
+    alertView.tag = 1;
+    [alertView show];
+    }
     
 }
 
@@ -114,6 +159,36 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [PFUser logOut];
     }
 }
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (alertView.tag == 1) {
+        if( 0 == buttonIndex ){ //cancel button
+            [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        } else if ( 1 == buttonIndex ){
+            [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+            Room *vc = [[Room alloc] init];
+            
+            
+            PFQuery *query = [PFQuery queryWithClassName:@"ChatRooms"];
+            [query whereKey:@"objectId" equalTo:_objId];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *object, NSError *error) {
+                if (!error) {
+                    PFObject *obj = [object objectAtIndex:0];
+                    vc.Roomobject = obj;
+
+                    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+                    [navigationController pushViewController:vc animated:YES];
+                    
+
+                    
+                }
+            }];
+        }
+    }
+}
+
 
 
 @end

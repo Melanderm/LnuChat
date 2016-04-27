@@ -108,10 +108,7 @@ static CGFloat kStandardLabelHeight = 15.0f;
 //-- Cronfiguring cell for the individual index
 - (void)configureTextForCell:(PFObject *)obj {
     
-    NSString *message = obj[@"Message"];
     self.PlaceholderImg.backgroundColor = _color;
-    
-    
     self.Hlabel.text = [obj[@"name"] uppercaseString];
     self.Hlabel.textColor = _color;
     
@@ -130,8 +127,11 @@ static CGFloat kStandardLabelHeight = 15.0f;
                 self.PlaceholderImg.image = image;
                 self.PlaceholderImg.layer.cornerRadius = kStandardSize/2;
                 
-            }} progressBlock:^(int percentDone) {
-                
+            } else {
+                self.PlaceholderImg.backgroundColor = _color;
+                self.PlaceholderImg.image = nil;
+                self.Onelabel.text = [NSString stringWithFormat:@"%@", [ExtraFucntions FirstLetters:obj[@"name"]]];
+            }
                 
             }];
         
