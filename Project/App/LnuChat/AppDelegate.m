@@ -23,8 +23,12 @@
     [Parse setApplicationId:@"xY13D8p07QRUgyUhJZhGFp35YDknSMae45DTZWRd"
                   clientKey:@"Xhx6hXi141WRkFFnQuOW6rWk8OkUSPtBTTBVBvhu"];
     [PFUser enableRevocableSessionInBackground];
-    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes  categories:nil];
+    
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
@@ -86,15 +90,13 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 }
 
 - (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:newDeviceToken];
-    [currentInstallation saveInBackground];
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation setDeviceTokenFromData:deviceToken];
+    [installation saveInBackground];
 }
-- (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo
-fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"Did get push with data: %@", [userInfo objectForKey:@"objectId"]);
     completionHandler(UIBackgroundFetchResultNewData);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidRecivePush" object:nil userInfo:userInfo];

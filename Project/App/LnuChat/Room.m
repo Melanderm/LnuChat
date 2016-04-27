@@ -17,11 +17,12 @@
 @end
 
 @implementation Room
-@synthesize  textView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    searchUser = NO;
+
+    
     NSString *hex  = _Roomobject[@"color"];
     color = [UIColorExpanded colorWithHexString:hex];
    
@@ -44,7 +45,7 @@
     self.navigationItem.rightBarButtonItem = rightBtn;
     
     
-    
+    // Setting up UITableview parameters and cells.
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height) style:UITableViewStylePlain];
     self.table.backgroundColor = [UIColor whiteColor];
     self.table.delegate = self;
@@ -57,6 +58,12 @@
     [DetailedRoomCell setTableViewWidth:self.view.frame.size.width];
     [ChatCell setTableViewWidth:self.view.frame.size.width];
     [SelfChatCell setTableViewWidth:self.view.frame.size.width];
+    
+    
+    // Setting up parameters for tag
+    searchUser = NO;
+    UsersTagedArray = [[NSMutableArray alloc] init];
+    
     
     // Recognise tap on tableview to dismiss keyboard
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard)];
@@ -74,6 +81,7 @@
                                                object:nil];
     
     
+    // Lisening to evets for new post and TagChanges in text.
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchPushedMessage:) name:@"DidRecivePush" object:nil];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DidChangeText:) name:@"DidChangeText" object:nil];
 
@@ -84,17 +92,18 @@
     
 }
 -(void)viewDidAppear:(BOOL)animated {
+    // Fetch new posts when room is shown
     [self getConverstaion];
     
 }
 
-
+/*
+ Loops thrue query 2 times, first time for Cached data
+ second time querys database data.
+ We need to keep track of whatQuert it is.
+ */
 -(void)getConverstaion {
-    /*
-     Loops thrue query 2 times, first time for Cached data
-     second time querys database data.
-     We need to keep track of whatQuert it is.
-     */
+
     PFQuery *query = [PFQuery queryWithClassName:@"Conversations"];
     [query includeKey:@"Author"];
     [query includeKey:@"ChatRoom"];
@@ -146,15 +155,16 @@
     
 }
 
-
+// Pushes the tableview to the top
 -(void)toTheTop {
     if (tableArray.count > 0) {
         NSIndexPath* ip = [NSIndexPath indexPathForRow:0 inSection:1];
         [self.table scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+    NSLog(@"%@", UsersTagedArray);
 }
 
-
+// Setting the navigation bar title
 - (void)setTitle:(NSString *)title
 {
     [super setTitle:title];
@@ -170,11 +180,6 @@
     titleView.text = title;
     [titleView sizeToFit];
 }
-
-
-
-
-
 
 #pragma mark - Tablesetup
 
@@ -251,8 +256,6 @@
     
 }
 
-
-
 - (UITableViewCell *)customCellForIndex:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
@@ -318,6 +321,7 @@
 }
 
 
+#pragma mark - Other setups
 
 /*
  Setting upp chatConversation object. 
@@ -326,13 +330,13 @@
  Adding it to the array and updates tableView.
  */
 -(void)sendMessage {
- 
-    PFObject *Chat = [PFObject objectWithClassName:@"Conversations"];
     
+    PFObject *Chat = [PFObject objectWithClassName:@"Conversations"];
     Chat[@"Message"] = textView.text;
     textView.text = @"";
     Chat[@"ChatRoom"] = _Roomobject;
     Chat[@"Author"] = [PFUser currentUser];
+    Chat[@"TaggedUsers"] = UsersTagedArray;
  
     [self->tableArray addObject:Chat];
     [label removeFromSuperview];
@@ -353,6 +357,8 @@
     [Chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             
+            // Clearing Taged users array.
+            [UsersTagedArray removeAllObjects];
         }else {
             [tableArray removeObject:Chat];
             [self.table reloadData];
@@ -363,9 +369,9 @@
         }
         
     }];
-
 }
 
+// Saving edited text.
 -(void)SaveEdit {
     [SVProgressHUD show];
     
@@ -387,8 +393,7 @@
     
 }
 
-
-
+// IF a long tap on the cell accours. Show UIalertView with "editing" options.
 -(void)cellTapped:(id)sender
 {
     UITapGestureRecognizer *tapView = (UITapGestureRecognizer *)sender;
@@ -458,7 +463,7 @@
     [self presentViewController:alert animated:YES completion:nil];
     
 }
-
+// Removing the users post. Updating table.
 -(void)removePost:(PFObject *)obj {
     [SVProgressHUD show];
     [obj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -478,7 +483,7 @@
 
 #pragma KEYBOARD ARGS
 
-
+// Setting up the code for the textView.
 -(void)setupMessage {
     
     //Base code from GrowingTextView example, but edited.
@@ -524,7 +529,7 @@
     
 }
 
-
+// Setting up the code for the textView. For editing stage.
 -(void)EditText:(PFObject *)obj {
     
     //Base code from GrowingTextView example, but edited.
@@ -569,7 +574,7 @@
     
 }
 
-
+// Hiding keyboard
 -(void)hideKeyBoard {
     [textView resignFirstResponder];
     if ([self.childViewControllers lastObject] != nil) {
@@ -618,6 +623,7 @@
         [self.table scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     }
 }
+
 //Code from Brett Schumann (HP GROWINGTEXTVIEW)
 -(void) keyboardWillHide:(NSNotification *)note{
     NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
@@ -640,6 +646,7 @@
     // commit animations
     [UIView commitAnimations];
 }
+
 //Code from Brett Schumann (HP GROWINGTEXTVIEW)
 - (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height
 {
@@ -667,6 +674,7 @@
    
 }
 
+// Removing keyboard and and moving textview down. and hiding send button.
 -(void)growingTextViewDidEndEditing:(HPGrowingTextView *)growingTextView {
     if (growingTextView.text.length == 0) {
         [UIView beginAnimations:nil context:nil];
@@ -679,7 +687,11 @@
     }
 }
 
+// Looking for @ when the text is changing. If found looking for user match.
 -(void)growingTextViewDidChange:(HPGrowingTextView *)growingTextView {
+    
+    if (growingTextView.text == 0)
+        [UsersTagedArray removeAllObjects];
     
     if (growingTextView.text.length != 0)
         if ([[growingTextView.text substringFromIndex:growingTextView.text.length-1] isEqualToString:@" "]) {
@@ -690,10 +702,9 @@
         if ([[growingTextView.text substringFromIndex:growingTextView.text.length-1] isEqualToString:@"@"]) {
             searchUser = YES;
         }
+    
     if (searchUser != NO)
     [growingTextView.text enumerateSubstringsInRange:NSMakeRange(0, growingTextView.text.length) options:NSStringEnumerationByWords| NSStringEnumerationReverse usingBlock:^(NSString *substring, NSRange subrange, NSRange enclosingRange, BOOL *stop) {
-      
-        
         NSLog(@"%@", substring);
         NSError *error = NULL;
         NSRegularExpression *tags = [NSRegularExpression
@@ -716,19 +727,26 @@
    
 }
 
+// Cutting of the tag writen by the user and replaces it with the name tapped.
 -(void)DidChangeText:(NSNotification*)notification
 {
     NSLog(@"UserInfo: %@", notification.userInfo);
+    if (![[textView.text substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"]) {
+    NSRange range= [textView.text rangeOfString: @" " options: NSBackwardsSearch];
+    NSString* str = [[textView.text substringToIndex: range.location] stringByAppendingString:@" "];
+    textView.text = [[str stringByAppendingString:notification.userInfo[@"User"]] stringByAppendingString:@" "];
+    } else
+        textView.text = [[@"" stringByAppendingString:notification.userInfo[@"User"]] stringByAppendingString:@" "];
     
-    textView.text = [[textView.text stringByAppendingString:notification.userInfo[@"User"]] stringByAppendingString:@" "];
+    [UsersTagedArray addObject:notification.userInfo[@"Username"]];
     [self removeTagView];
+    
 }
 
-
-
+// Reciving the push message. Getting the post object id and querying and fetches only that object and refreshes the table.
 -(void)fetchPushedMessage:(NSNotification *)notification {
     NSLog(@"Push info: %@", notification.userInfo);
-    if ([notification.userInfo[@"objectId"] isEqualToString:_Roomobject.objectId]) {
+    if ([notification.userInfo[@"objectId"] isEqualToString:_Roomobject.objectId] && notification.userInfo[@"TaggedUsers"] == nil) {
     NSLog(@"Acted on push");
     NSString *Id = notification.userInfo[@"chatId"];
     PFQuery *query = [PFQuery queryWithClassName:@"Conversations"];
@@ -750,7 +768,7 @@
     }
 }
 
-
+// Getting the @Tag string and querying users that matches it then showing result to the user.
 -(void)UserQuery:(NSString *)username {
     PFQuery *query = [PFUser query];
     [query whereKey:@"name" containsString:username];
@@ -782,7 +800,7 @@
     }];
 
 }
-
+// Showing tagUser view
 -(void)UserTags:(NSArray *)obj {
     UIViewController *vc = [self.childViewControllers lastObject];
     [vc willMoveToParentViewController:nil];
@@ -803,7 +821,7 @@
     self.table.alpha = 0.3;
 
 }
-
+// removing the tagUser view
 -(void)removeTagView {
     UIViewController *vc = [self.childViewControllers lastObject];
     [vc willMoveToParentViewController:nil];

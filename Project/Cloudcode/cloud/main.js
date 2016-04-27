@@ -3,6 +3,7 @@ Created by Mikael Melander 2016-03-24
 
 CloudCode functions
  */
+
  /*
 Before anything is saved in ChatRooms this script is executed.
 
@@ -46,9 +47,6 @@ Parse.Cloud.beforeSave("ChatRooms", function(request, response) {
         }
 
     });
-
-
-
 
 });
 
@@ -162,8 +160,6 @@ function emailAdress(emailadress, password) {
       });
 }
 
-
-
 Parse.Cloud.afterSave("Conversations", function(request) {
 
     if (!request.object.get("Edited") == true) {
@@ -184,6 +180,32 @@ Parse.Cloud.afterSave("Conversations", function(request) {
             console.log(error);
         }
     });
+    }
+
+    if(request.object.get("TaggedUsers").length > 0) {
+
+        var query2 = new Parse.Query(Parse.Installation);
+
+        //Dont want the author to get its on message, because its already added locally
+      //  query2.notEqualTo("Username", Parse.User.current().get("username"));
+        query2.containedIn("Username", request.object.get("TaggedUsers"));
+
+        Parse.Push.send({
+            where: query2,
+            data: {
+                alert: Parse.User.current().get("name") +" nämde dig i en post",
+                chatId: request.object.id,
+                objectId: request.object.get("ChatRoom").id,
+                badge: "Increment",
+                sound: "cheering.caf"
+            }
+        }, {
+            success: function () {
+
+            }, error: function (error) {
+                console.log(error);
+            }
+        });
     }
 
 });
@@ -217,3 +239,6 @@ Parse.Cloud.define("CreateRoom", function(request, response) {
     });
 
 });
+
+
+

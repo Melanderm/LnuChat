@@ -32,15 +32,16 @@
     UIButton *doneBtn;
     
     PFObject *EditObj;
-    
+    HPGrowingTextView *textView;
     
     
     Boolean searchUser;
+    NSMutableArray *UsersTagedArray;
 }
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong)  PFObject *Roomobject;
 @property (nonatomic, strong)  PFObject *ChatObj;
-@property (nonatomic, strong)  HPGrowingTextView *textView;
+
 
 
 @end
