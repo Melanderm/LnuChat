@@ -17,10 +17,11 @@
 @end
 
 @implementation Room
-
+@synthesize  textView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    searchUser = NO;
     NSString *hex  = _Roomobject[@"color"];
     color = [UIColorExpanded colorWithHexString:hex];
    
@@ -74,9 +75,12 @@
     
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchPushedMessage:) name:@"DidRecivePush" object:nil];
-    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DidChangeText:) name:@"DidChangeText" object:nil];
+
     
     [self setupMessage];
+    
+
     
 }
 -(void)viewDidAppear:(BOOL)animated {
@@ -568,6 +572,9 @@
 
 -(void)hideKeyBoard {
     [textView resignFirstResponder];
+    if ([self.childViewControllers lastObject] != nil) {
+        [self removeTagView];
+    }
 }
 
 //Code from Brett Schumann (HP GROWINGTEXTVIEW)
@@ -672,6 +679,51 @@
     }
 }
 
+-(void)growingTextViewDidChange:(HPGrowingTextView *)growingTextView {
+    
+    if (growingTextView.text.length != 0)
+        if ([[growingTextView.text substringFromIndex:growingTextView.text.length-1] isEqualToString:@" "]) {
+            searchUser = NO;
+            [self removeTagView];
+        }
+    if (growingTextView.text.length != 0)
+        if ([[growingTextView.text substringFromIndex:growingTextView.text.length-1] isEqualToString:@"@"]) {
+            searchUser = YES;
+        }
+    if (searchUser != NO)
+    [growingTextView.text enumerateSubstringsInRange:NSMakeRange(0, growingTextView.text.length) options:NSStringEnumerationByWords| NSStringEnumerationReverse usingBlock:^(NSString *substring, NSRange subrange, NSRange enclosingRange, BOOL *stop) {
+      
+        
+        NSLog(@"%@", substring);
+        NSError *error = NULL;
+        NSRegularExpression *tags = [NSRegularExpression
+                                     regularExpressionWithPattern:@"([^, .]+)([, .]|$)"
+                                     options:NSRegularExpressionCaseInsensitive
+                                     error:&error];
+        NSArray *matches = [tags matchesInString:substring options:0 range:NSMakeRange(0, substring.length)];
+        
+        for (NSTextCheckingResult *match in matches) {
+            [self UserQuery:[substring substringWithRange:[match rangeAtIndex:0]]];
+            
+        }
+        if (substring.length == 0)
+            [self removeTagView];
+        
+        *stop = YES;
+    }];
+  
+   
+   
+}
+
+-(void)DidChangeText:(NSNotification*)notification
+{
+    NSLog(@"UserInfo: %@", notification.userInfo);
+    
+    textView.text = [[textView.text stringByAppendingString:notification.userInfo[@"User"]] stringByAppendingString:@" "];
+    [self removeTagView];
+}
+
 
 
 -(void)fetchPushedMessage:(NSNotification *)notification {
@@ -698,8 +750,74 @@
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated {
+
+-(void)UserQuery:(NSString *)username {
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"name" containsString:username];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count != 0) {
+                // IF user has already erased @ before the load was done we do not want to present Tags.
+                NSRange range = [textView.text rangeOfString:@"@"];
+                if (range.location != NSNotFound)
+                {
+                    [self UserTags:objects];
+                }
+               
+                NSLog(@"Found to match tag: %lu", (unsigned long)objects.count);
+                
+            } else {
+                [self removeTagView];
+            }
+            
+            
+        }
+        else
+        {
+            
+
+        }
+        
+    }];
+
+}
+
+-(void)UserTags:(NSArray *)obj {
+    UIViewController *vc = [self.childViewControllers lastObject];
+    [vc willMoveToParentViewController:nil];
+    [vc.view removeFromSuperview];
+    [vc removeFromParentViewController];
     
+    UserTable *dst =[[UserTable alloc] init];
+    dst.usersArray = obj;
+    dst.color = color;
+    dst.view.frame = CGRectMake(0, (self.table.bounds.size.height-(obj.count*45)), self.view.bounds.size.width, (obj.count*45));
+    
+    dst.view.layer.borderColor = color.CGColor;
+    dst.view.layer.borderWidth = 1.0;
+    
+    [self addChildViewController:dst];
+    [self.view addSubview:dst.view];
+    [dst didMoveToParentViewController:self];
+    self.table.alpha = 0.3;
+
+}
+
+-(void)removeTagView {
+    UIViewController *vc = [self.childViewControllers lastObject];
+    [vc willMoveToParentViewController:nil];
+    [vc.view removeFromSuperview];
+    [vc removeFromParentViewController];
+    self.table.alpha = 1;
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    UIViewController *vc = [self.childViewControllers lastObject];
+    [vc willMoveToParentViewController:nil];
+    [vc.view removeFromSuperview];
+    [vc removeFromParentViewController];
 }
 
 

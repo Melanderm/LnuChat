@@ -17,6 +17,9 @@
     UIButton *regist;
     
     UILabel *info;
+    
+
 }
+@property (nonatomic, assign) BOOL fromSettings;
 
 @end

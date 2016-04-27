@@ -26,14 +26,13 @@
         } 
     }];
 
-    
     [[UIView appearance] setTintColor:k_mainColor];
     UIBarButtonItem *newback = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [[self navigationItem] setBackBarButtonItem:newback];
     [self.navigationController.navigationBar setTintColor:k_mainColor];
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setTranslucent:NO];
-    self.navigationController.navigationBar.alpha = 0;
+ 
     
  
     if ([PFUser currentUser][@"Profilepic"] != NULL)
@@ -63,6 +62,11 @@
 
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+//self.table.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height);
+
+}
+
 -(void)Image {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -81,6 +85,7 @@
 UIImage *squareCropImageToSideLength(UIImage *sourceImage,
                                      CGFloat sideLength)
 {
+    [SVProgressHUD showInfoWithStatus:@"Skalar om bilden"];
     // input size comes from image
     CGSize inputSize = sourceImage.size;
     
@@ -130,7 +135,7 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
 }
 
 -(void)uploadImage:(UIImage *)img {
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"Laddar upp bild"];
     NSData* data = UIImageJPEGRepresentation(img, 1.0f);
     PFFile *imageFile = [PFFile fileWithName:@"image.jpg" data:data];
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -154,6 +159,8 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
         }
     }];
 }
+
+
 
 #pragma EXTRAS
 
@@ -251,10 +258,12 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
     }
     if (indexPath.row == 1) {
         NewPassword *vc = [[NewPassword alloc] init];
+        vc.fromSettings = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (indexPath.row == 2) {
         ChooseName *vc = [[ChooseName alloc] init];
+        vc.fromSettings = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
   

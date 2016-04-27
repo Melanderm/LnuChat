@@ -17,6 +17,8 @@
 #import "HPGrowingTextView.h"
 #import "ErrorHandler.h"
 
+#import "UserTable.h"
+
 
 
 @interface Room : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,HPGrowingTextViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, UIApplicationDelegate> {
@@ -28,14 +30,17 @@
     
     UIView *containerView;
     UIButton *doneBtn;
-    HPGrowingTextView *textView;
     
     PFObject *EditObj;
+    
+    
+    
+    Boolean searchUser;
 }
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong)  PFObject *Roomobject;
 @property (nonatomic, strong)  PFObject *ChatObj;
-
+@property (nonatomic, strong)  HPGrowingTextView *textView;
 
 
 @end

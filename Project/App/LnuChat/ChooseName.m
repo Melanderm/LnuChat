@@ -13,19 +13,32 @@
 @end
 
 @implementation ChooseName
+@synthesize fromSettings;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBar.tintColor = k_mainColor;
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.hidesBackButton = YES; //HIDES BACK BUTTON, not allowed to skip this step.
+    if (fromSettings) {
+        [[UIView appearance] setTintColor:k_mainColor];
+        UIBarButtonItem *newback = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        [[self navigationItem] setBackBarButtonItem:newback];
+        [self.navigationController.navigationBar setTintColor:k_mainColor];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                      forBarMetrics:UIBarMetricsDefault];
+        self.navigationController.navigationBar.shadowImage = [UIImage new];
+        [self.navigationController.navigationBar setTranslucent:NO];
+    } else {
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                      forBarMetrics:UIBarMetricsDefault];
+        self.navigationController.navigationBar.shadowImage = [UIImage new];
+        self.navigationController.navigationBar.translucent = YES;
+        self.navigationController.navigationBar.tintColor = k_mainColor;
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        self.navigationItem.hidesBackButton = YES; //HIDES BACK BUTTON, not allowed to skip this step.
+    }
     
     
     UIImageView *bk = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -177,10 +190,22 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-    /*
-     Hides any running SVProgressHUD
-     */
+-(void) viewWillDisappear:(BOOL)animated {
+    // Identifies that the view was removed by hitting the back button
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        
+        //Returning the navigationbar to the more visable look that it has in settigsView
+        [[UIView appearance] setTintColor:k_mainColor];
+        UIBarButtonItem *newback = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        [[self navigationItem] setBackBarButtonItem:newback];
+        [self.navigationController.navigationBar setTintColor:k_mainColor];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+        [self.navigationController.navigationBar setTranslucent:NO];
+        [self.navigationController.navigationBar setBackgroundImage:nil
+                                                      forBarMetrics:UIBarMetricsDefault];
+        self.navigationController.navigationBar.shadowImage = nil;
+    }
+    [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
 }
 

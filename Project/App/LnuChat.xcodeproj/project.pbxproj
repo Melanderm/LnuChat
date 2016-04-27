@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73006E291CCF812700AF6D09 /* UserTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 73006E281CCF812700AF6D09 /* UserTable.m */; };
 		73302BB61CABDD76006AEE7C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB51CABDD76006AEE7C /* libsqlite3.tbd */; };
 		73302BB81CABDD8C006AEE7C /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB71CABDD8C006AEE7C /* libz.1.tbd */; };
 		73302BBA1CABDD90006AEE7C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB91CABDD90006AEE7C /* SystemConfiguration.framework */; };
@@ -23,6 +24,7 @@
 		73302BD21CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCC1CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework */; };
 		73302BD31CABDDF8006AEE7C /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCD1CABDDF8006AEE7C /* ParseTwitterUtils.framework */; };
 		73302BD41CABDDF8006AEE7C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCE1CABDDF8006AEE7C /* ParseUI.framework */; };
+		733083311CD0C0EC00DD1747 /* UserTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 733083301CD0C0EC00DD1747 /* UserTagsCell.m */; };
 		7344097C1CC2D71F0028F650 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344097B1CC2D71F0028F650 /* Settings.m */; };
 		734409851CC2D73C0028F650 /* DetailedRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344097E1CC2D73C0028F650 /* DetailedRoomCell.m */; };
 		734409861CC2D73C0028F650 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 734409801CC2D73C0028F650 /* ChatCell.m */; };
@@ -86,6 +88,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73006E271CCF812700AF6D09 /* UserTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTable.h; sourceTree = "<group>"; };
+		73006E281CCF812700AF6D09 /* UserTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTable.m; sourceTree = "<group>"; };
 		73302BB51CABDD76006AEE7C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		73302BB71CABDD8C006AEE7C /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
 		73302BB91CABDD90006AEE7C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -102,6 +106,8 @@
 		73302BCC1CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		73302BCD1CABDDF8006AEE7C /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseTwitterUtils.framework; sourceTree = "<group>"; };
 		73302BCE1CABDDF8006AEE7C /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		7330832F1CD0C0EC00DD1747 /* UserTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTagsCell.h; sourceTree = "<group>"; };
+		733083301CD0C0EC00DD1747 /* UserTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTagsCell.m; sourceTree = "<group>"; };
 		7344097A1CC2D71F0028F650 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		7344097B1CC2D71F0028F650 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		7344097D1CC2D73C0028F650 /* DetailedRoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedRoomCell.h; sourceTree = "<group>"; };
@@ -268,6 +274,8 @@
 				734409841CC2D73C0028F650 /* SettingsCell.m */,
 				736173DB1CBD2D5E00B93907 /* TopicsCell.h */,
 				736173DC1CBD2D5E00B93907 /* TopicsCell.m */,
+				7330832F1CD0C0EC00DD1747 /* UserTagsCell.h */,
+				733083301CD0C0EC00DD1747 /* UserTagsCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -321,6 +329,8 @@
 				7385981F1CABCC100089FB26 /* ViewController.m */,
 				734409891CC2D7490028F650 /* Room.h */,
 				7344098A1CC2D7490028F650 /* Room.m */,
+				73006E271CCF812700AF6D09 /* UserTable.h */,
+				73006E281CCF812700AF6D09 /* UserTable.m */,
 				738598211CABCC100089FB26 /* Main.storyboard */,
 				738598241CABCC100089FB26 /* Assets.xcassets */,
 				738598261CABCC100089FB26 /* LaunchScreen.storyboard */,
@@ -556,6 +566,7 @@
 			files = (
 				738598201CABCC100089FB26 /* ViewController.m in Sources */,
 				734409871CC2D73C0028F650 /* SelfChatCell.m in Sources */,
+				73006E291CCF812700AF6D09 /* UserTable.m in Sources */,
 				73F16E4B1CB1ABDB0036DF61 /* SVRadialGradientLayer.m in Sources */,
 				734409901CC2D7850028F650 /* DateChecker.m in Sources */,
 				73F16E4A1CB1ABDB0036DF61 /* SVProgressHUD.m in Sources */,
@@ -572,6 +583,7 @@
 				734409991CC2D7BD0028F650 /* _README.md in Sources */,
 				73F16E531CB1AC3B0036DF61 /* NewPassword.m in Sources */,
 				73F16E4E1CB1AC360036DF61 /* ChooseName.m in Sources */,
+				733083311CD0C0EC00DD1747 /* UserTagsCell.m in Sources */,
 				7344099C1CC2D7BD0028F650 /* HPTextViewInternal.m in Sources */,
 				734409911CC2D7850028F650 /* ExtraFucntions.m in Sources */,
 				734409881CC2D73C0028F650 /* SettingsCell.m in Sources */,
