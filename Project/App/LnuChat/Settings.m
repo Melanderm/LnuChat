@@ -59,7 +59,7 @@
     
     [SettingsCell setTableViewWidth:self.view.frame.size.width];
 
-
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -266,6 +266,25 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
         vc.fromSettings = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if (indexPath.row == 3) {
+        pushnotificationsView *dst = [[pushnotificationsView alloc] init];
+        UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:dst];
+        vc.view.frame = CGRectMake(15, 50, self.view.bounds.size.width-30, self.view.bounds.size.height/2);
+    
+        vc.view.layer.borderColor = k_mainColor.CGColor;
+        vc.view.layer.borderWidth = 1.0;
+        vc.view.clipsToBounds = YES;
+        vc.view.layer.cornerRadius = 10;
+        
+        [self addChildViewController:vc];
+        [self.view addSubview:vc.view];
+        [vc didMoveToParentViewController:self];
+        
+        self.table.alpha = 0.5;
+        
+        [self.table addGestureRecognizer:tap];
+
+    }
   
     if (indexPath.row == 4) {
         UIAlertController * Lalert=   [UIAlertController
@@ -305,6 +324,15 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
     }
 
     
+}
+
+-(void)removeView {
+    UIViewController *vc = [self.childViewControllers lastObject];
+    [self.table removeGestureRecognizer:tap];
+         self.table.alpha = 1;
+    [vc willMoveToParentViewController:nil];
+    [vc.view removeFromSuperview];
+    [vc removeFromParentViewController];
 }
 
 

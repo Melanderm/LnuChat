@@ -128,7 +128,7 @@ function randomP() {
 Sending information email when user has been created.
 */
 function emailAdress(emailadress, password) {
-  var mandrill = require("mandrill");
+ /* var mandrill = require("mandrill");
   mandrill.initialize("LwKRMxkdNGzYZgUIAws2rg");
 
   var body = 'Your account information for LnuChat application \n\n' + 'Your username: ' + emailadress + '\nTemporary password: ' + password + '\n\n(PS! Both username and password are capslock sensitive) \n\nBest regards LnuChat';
@@ -157,7 +157,30 @@ function emailAdress(emailadress, password) {
         error: function(error) {
           return "Something went wrong. Could not create user :(";
         }
-      });
+      }); */
+      
+    var body = 'Your account information for LnuChat application \n\n' + 'Your username: ' + emailadress + '\nTemporary password: ' + password + '\n\n(PS! Both username and password are capslock sensitive) \n\nBest regards LnuChat';
+    var title = 'LnuChat Account information.';
+      
+    var mailgun = require('mailgun');
+    mailgun.initialize('mg.swift-it.se', 'key-2c1f928bae591827096c3b2abcddad53');
+
+    
+    mailgun.sendEmail({
+        to: emailadress,
+        from: 'LnuChat <noreply@lnuchat.se>',
+        subject: title,
+        text: body
+    }, {
+        success: function(httpResponse) {
+            console.log(httpResponse);
+            response.success("Your mail has been sent to support");
+        },
+        error: function(httpResponse) {
+            console.error(httpResponse);
+            response.error("Something went wrong, the mail has not been sent :(");
+        }
+    });
 }
 
 Parse.Cloud.afterSave("Conversations", function(request) {

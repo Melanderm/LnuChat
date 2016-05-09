@@ -13,6 +13,7 @@
 #import "NewPassword.h"
 #import "ChooseName.h"
 #import "Login.h"
+#import "pushnotificationsView.h"
 
 @interface Settings : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate> {
     
@@ -21,6 +22,8 @@
     NSMutableArray *tableArrayC;
     
     NSString *bild;
+    
+    UITapGestureRecognizer *tap;
 }
 
 @property (nonatomic, strong) UITableView *table;

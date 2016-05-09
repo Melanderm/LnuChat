@@ -21,8 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
-    
     NSString *hex  = _Roomobject[@"color"];
     color = [UIColorExpanded colorWithHexString:hex];
    
@@ -84,17 +82,16 @@
     // Lisening to evets for new post and TagChanges in text.
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchPushedMessage:) name:@"DidRecivePush" object:nil];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DidChangeText:) name:@"DidChangeText" object:nil];
-
     
     [self setupMessage];
     
 
     
 }
+
 -(void)viewDidAppear:(BOOL)animated {
     // Fetch new posts when room is shown
     [self getConverstaion];
-    
 }
 
 /*
@@ -165,8 +162,7 @@
 }
 
 // Setting the navigation bar title
-- (void)setTitle:(NSString *)title
-{
+- (void)setTitle:(NSString *)title {
     [super setTitle:title];
     UILabel *titleView = (UILabel *)self.navigationItem.titleView;
     if (!titleView) {
@@ -206,8 +202,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    
     switch (indexPath.section)
     {
         case 0:
@@ -245,9 +239,6 @@
               
                  return cell;
             }
-         
-            
-           
             
         }
             
@@ -256,8 +247,7 @@
     
 }
 
-- (UITableViewCell *)customCellForIndex:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)customCellForIndex:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     NSString * detailId = DIdentifier;
     cell = [self.table dequeueReusableCellWithIdentifier:detailId];
@@ -270,8 +260,7 @@
     return cell;
 }
 
-- (UITableViewCell *)customCellForIndex2:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)customCellForIndex2:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     NSString * detailId = CIdentifier;
     cell = [self.table dequeueReusableCellWithIdentifier:detailId];
@@ -284,8 +273,7 @@
     return cell;
 }
 
-- (UITableViewCell *)customCellForIndex3:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)customCellForIndex3:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     NSString * detailId = SCIdentifier;
     cell = [self.table dequeueReusableCellWithIdentifier:detailId];
@@ -299,8 +287,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
- 
     
     if (indexPath.section == 0) {
         CGFloat cellHeight = 0.0;
@@ -394,8 +380,7 @@
 }
 
 // IF a long tap on the cell accours. Show UIalertView with "editing" options.
--(void)cellTapped:(id)sender
-{
+-(void)cellTapped:(id)sender {
     UITapGestureRecognizer *tapView = (UITapGestureRecognizer *)sender;
     NSLog(@"Pressed %ld", [tapView.view tag]);
     
@@ -463,6 +448,7 @@
     [self presentViewController:alert animated:YES completion:nil];
     
 }
+
 // Removing the users post. Updating table.
 -(void)removePost:(PFObject *)obj {
     [SVProgressHUD show];
@@ -583,8 +569,7 @@
 }
 
 //Code from Brett Schumann (HP GROWINGTEXTVIEW)
--(void)resignTextView
-{
+-(void)resignTextView {
     [textView resignFirstResponder];
     if (textView.text.length > 0) {
          [self sendMessage];
@@ -648,8 +633,7 @@
 }
 
 //Code from Brett Schumann (HP GROWINGTEXTVIEW)
-- (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height
-{
+- (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height {
     float diff = (growingTextView.frame.size.height - height);
     
     CGRect r = containerView.frame;
@@ -728,8 +712,8 @@
 }
 
 // Cutting of the tag writen by the user and replaces it with the name tapped.
--(void)DidChangeText:(NSNotification*)notification
-{
+// USing Notificiation to easiest communicate between views.
+-(void)DidChangeText:(NSNotification*)notification {
     NSLog(@"UserInfo: %@", notification.userInfo);
     if (![[textView.text substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"]) {
     NSRange range= [textView.text rangeOfString: @" " options: NSBackwardsSearch];
@@ -806,6 +790,7 @@
     }];
 
 }
+
 // Showing tagUser view
 -(void)UserTags:(NSArray *)obj {
     UIViewController *vc = [self.childViewControllers lastObject];
@@ -827,6 +812,7 @@
     self.table.alpha = 0.3;
 
 }
+
 // removing the tagUser view
 -(void)removeTagView {
     UIViewController *vc = [self.childViewControllers lastObject];

@@ -49,24 +49,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
-    static NSString *CellIdentifier = @"Cell";
-    
-  /*  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
-    // Set the data for this cell:
-    PFObject *user = [_usersArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = user[@"name"];
-    cell.textLabel.textColor = _color;
 
-   // cell.imageView.image = [UIImage imageNamed:@"flower.png"];
-
-    
-    return cell;
-} */
-    
     switch (indexPath.section)
     {
         case 0:
@@ -111,7 +94,6 @@
     PFObject *obj = [_usersArray objectAtIndex:indexPath.row];
     NSDictionary* userInfo = @{@"User": obj[@"name"], @"Username": obj[@"username"]};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidChangeText" object:obj userInfo:userInfo];
-    NSLog(@"%@", obj[@"name"]);
     
 }
 

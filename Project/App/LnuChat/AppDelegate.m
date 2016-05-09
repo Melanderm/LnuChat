@@ -31,18 +31,10 @@
                                                                              categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
-    
-    
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    
-    
+
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidRecivePush" object:nil userInfo:notificationPayload];
-    
-    
-    
-    
     
     return YES;
 }
@@ -98,22 +90,11 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
                 
                 UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
                 [navigationController pushViewController:vc animated:YES];
-                
-                
-                
+
             }
         }];
 
     }
-    
-        
-
-                                     
-   
-    
-        
-    
-   
 }
 
 - (void)application:(UIApplication *)application
@@ -169,8 +150,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         } else if ( 1 == buttonIndex ){
             [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
             Room *vc = [[Room alloc] init];
-            
-            
+
             PFQuery *query = [PFQuery queryWithClassName:@"ChatRooms"];
             [query whereKey:@"objectId" equalTo:_objId];
             [query findObjectsInBackgroundWithBlock:^(NSArray *object, NSError *error) {
@@ -180,9 +160,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
                     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
                     [navigationController pushViewController:vc animated:YES];
-                    
-
-                    
+    
                 }
             }];
         }

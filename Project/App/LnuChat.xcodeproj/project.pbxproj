@@ -47,6 +47,8 @@
 		736173ED1CBD2E6C00B93907 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 736173E71CBD2E6C00B93907 /* 180.png */; };
 		736173EE1CBD2E6C00B93907 /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 736173E81CBD2E6C00B93907 /* menu@3x.png */; };
 		736173F01CBD2E6F00B93907 /* ImagesFrom in Resources */ = {isa = PBXBuildFile; fileRef = 736173EF1CBD2E6F00B93907 /* ImagesFrom */; };
+		736A1D481CD27660003F7A27 /* pushnotificationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 736A1D471CD27660003F7A27 /* pushnotificationsView.m */; };
+		736A1D4D1CD27742003F7A27 /* pushnotificationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 736A1D4C1CD27742003F7A27 /* pushnotificationsCell.m */; };
 		7385981A1CABCC100089FB26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 738598191CABCC100089FB26 /* main.m */; };
 		7385981D1CABCC100089FB26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385981C1CABCC100089FB26 /* AppDelegate.m */; };
 		738598201CABCC100089FB26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385981F1CABCC100089FB26 /* ViewController.m */; };
@@ -143,6 +145,10 @@
 		736173E71CBD2E6C00B93907 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 180.png; sourceTree = "<group>"; };
 		736173E81CBD2E6C00B93907 /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@3x.png"; sourceTree = "<group>"; };
 		736173EF1CBD2E6F00B93907 /* ImagesFrom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ImagesFrom; sourceTree = "<group>"; };
+		736A1D461CD27660003F7A27 /* pushnotificationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pushnotificationsView.h; sourceTree = "<group>"; };
+		736A1D471CD27660003F7A27 /* pushnotificationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pushnotificationsView.m; sourceTree = "<group>"; };
+		736A1D4B1CD27742003F7A27 /* pushnotificationsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pushnotificationsCell.h; sourceTree = "<group>"; };
+		736A1D4C1CD27742003F7A27 /* pushnotificationsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pushnotificationsCell.m; sourceTree = "<group>"; };
 		738598151CABCC100089FB26 /* LnuChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LnuChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		738598191CABCC100089FB26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7385981B1CABCC100089FB26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -264,18 +270,10 @@
 		736173DE1CBD2D6500B93907 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				7344097D1CC2D73C0028F650 /* DetailedRoomCell.h */,
-				7344097E1CC2D73C0028F650 /* DetailedRoomCell.m */,
-				7344097F1CC2D73C0028F650 /* ChatCell.h */,
-				734409801CC2D73C0028F650 /* ChatCell.m */,
-				734409811CC2D73C0028F650 /* SelfChatCell.h */,
-				734409821CC2D73C0028F650 /* SelfChatCell.m */,
-				734409831CC2D73C0028F650 /* SettingsCell.h */,
-				734409841CC2D73C0028F650 /* SettingsCell.m */,
-				736173DB1CBD2D5E00B93907 /* TopicsCell.h */,
-				736173DC1CBD2D5E00B93907 /* TopicsCell.m */,
-				7330832F1CD0C0EC00DD1747 /* UserTagsCell.h */,
-				733083301CD0C0EC00DD1747 /* UserTagsCell.m */,
+				736A1D4A1CD27709003F7A27 /* User */,
+				736A1D491CD27705003F7A27 /* Room */,
+				736A1D4B1CD27742003F7A27 /* pushnotificationsCell.h */,
+				736A1D4C1CD27742003F7A27 /* pushnotificationsCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -293,6 +291,32 @@
 				736173E81CBD2E6C00B93907 /* menu@3x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		736A1D491CD27705003F7A27 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				7344097D1CC2D73C0028F650 /* DetailedRoomCell.h */,
+				7344097E1CC2D73C0028F650 /* DetailedRoomCell.m */,
+				7344097F1CC2D73C0028F650 /* ChatCell.h */,
+				734409801CC2D73C0028F650 /* ChatCell.m */,
+				734409811CC2D73C0028F650 /* SelfChatCell.h */,
+				734409821CC2D73C0028F650 /* SelfChatCell.m */,
+				736173DB1CBD2D5E00B93907 /* TopicsCell.h */,
+				736173DC1CBD2D5E00B93907 /* TopicsCell.m */,
+			);
+			name = Room;
+			sourceTree = "<group>";
+		};
+		736A1D4A1CD27709003F7A27 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				734409831CC2D73C0028F650 /* SettingsCell.h */,
+				734409841CC2D73C0028F650 /* SettingsCell.m */,
+				7330832F1CD0C0EC00DD1747 /* UserTagsCell.h */,
+				733083301CD0C0EC00DD1747 /* UserTagsCell.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		7385980C1CABCC100089FB26 = {
@@ -383,6 +407,8 @@
 				73F16E521CB1AC3B0036DF61 /* License.m */,
 				7344097A1CC2D71F0028F650 /* Settings.h */,
 				7344097B1CC2D71F0028F650 /* Settings.m */,
+				736A1D461CD27660003F7A27 /* pushnotificationsView.h */,
+				736A1D471CD27660003F7A27 /* pushnotificationsView.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -573,6 +599,8 @@
 				738598201CABCC100089FB26 /* ViewController.m in Sources */,
 				734409871CC2D73C0028F650 /* SelfChatCell.m in Sources */,
 				73006E291CCF812700AF6D09 /* UserTable.m in Sources */,
+				736A1D481CD27660003F7A27 /* pushnotificationsView.m in Sources */,
+				736A1D4D1CD27742003F7A27 /* pushnotificationsCell.m in Sources */,
 				73F16E4B1CB1ABDB0036DF61 /* SVRadialGradientLayer.m in Sources */,
 				734409901CC2D7850028F650 /* DateChecker.m in Sources */,
 				73F16E4A1CB1ABDB0036DF61 /* SVProgressHUD.m in Sources */,

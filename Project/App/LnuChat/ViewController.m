@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+    
     [self setTitle:@"LnuChat"];
     
     [[UIView appearance] setTintColor:k_mainColor];
