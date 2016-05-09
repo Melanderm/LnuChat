@@ -73,6 +73,9 @@
 "IMAGESAVED" = "Bilden sparad";
 
 "CREATE" = "Skapa";
+"REMOVEIMAGE" = "Ta bort";
+"REMOVEIMAGEDETAILED" = "Är du säker att du vill ta bort din profilbild?";
+"REMOVEDPICTURE" = "Profilbild borttagen";
 
 
 

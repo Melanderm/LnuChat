@@ -34,16 +34,7 @@
     [self.navigationController.navigationBar setTranslucent:NO];
  
     
- 
-    if ([PFUser currentUser][@"Profilepic"] != NULL)
-        bild = NSLocalizedString(@"CHANGEIMAGE", @"Change image");
-    else 
-        bild = NSLocalizedString(@"UPLOADIMAGE", @"Upload image");
-    
-    tableArray = [[NSMutableArray alloc] initWithObjects:bild, NSLocalizedString(@"CHANGEPW", @"Change password"), NSLocalizedString(@"CHANGENAME", @"Change name"), NSLocalizedString(@"PUSHNOTIS", @"Pusnotiser"), NSLocalizedString(@"LOGOUT", @"Logout"), nil];
-    tableArrayD = [[NSMutableArray alloc] initWithObjects:NSLocalizedString(@"IMAGEDETALED", @"Img detailed"),NSLocalizedString(@"CHANGEPWDETAILED", @"pw detailed"), NSLocalizedString(@"CHANGENAMEDETAILED", @"Name detailed"), NSLocalizedString(@"PUSHNOTISDETAILED", @"Pusnotiser detailed"), NSLocalizedString(@"LOGOUTDETAILED", @"Logout detailed"), nil];
-    tableArrayC = [[NSMutableArray alloc] initWithObjects:@"#3498db",@"#2ecc71", @"#9b59b6", @"#f1c40f", @"#c0392b", nil];
-    
+
     //LEFT NAVIGATIONBAR BUTTON
     UIImage *image = [UIImage imageNamed:@"cross.png"];
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(dismissView)];
@@ -60,6 +51,19 @@
     [SettingsCell setTableViewWidth:self.view.frame.size.width];
 
     tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
+    [self settingUpArray];
+}
+
+-(void)settingUpArray {
+    if ([PFUser currentUser][@"Profilepic"] != NULL)
+        bild = NSLocalizedString(@"CHANGEIMAGE", @"Change image");
+    else
+        bild = NSLocalizedString(@"UPLOADIMAGE", @"Upload image");
+    
+    tableArray = [[NSMutableArray alloc] initWithObjects:bild, NSLocalizedString(@"CHANGEPW", @"Change password"), NSLocalizedString(@"CHANGENAME", @"Change name"), NSLocalizedString(@"PUSHNOTIS", @"Pusnotiser"), NSLocalizedString(@"LOGOUT", @"Logout"), nil];
+    tableArrayD = [[NSMutableArray alloc] initWithObjects:NSLocalizedString(@"IMAGEDETALED", @"Img detailed"),NSLocalizedString(@"CHANGEPWDETAILED", @"pw detailed"), NSLocalizedString(@"CHANGENAMEDETAILED", @"Name detailed"), NSLocalizedString(@"PUSHNOTISDETAILED", @"Pusnotiser detailed"), NSLocalizedString(@"LOGOUTDETAILED", @"Logout detailed"), nil];
+    tableArrayC = [[NSMutableArray alloc] initWithObjects:@"#3498db",@"#2ecc71", @"#9b59b6", @"#f1c40f", @"#c0392b", nil];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -83,8 +87,7 @@
 
 // SQUARE IMAGE! CODE FROME https://www.cocoanetics.com/2014/07/square-cropping-images/
 UIImage *squareCropImageToSideLength(UIImage *sourceImage,
-                                     CGFloat sideLength)
-{
+                                     CGFloat sideLength) {
     [SVProgressHUD showInfoWithStatus:@"Skalar om bilden"];
     // input size comes from image
     CGSize inputSize = sourceImage.size;
@@ -147,7 +150,7 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
                 if (succeeded) {
                    [[PFUser currentUser] fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                        if (!error) {
-                        tableArray = [[NSMutableArray alloc] initWithObjects:NSLocalizedString(@"CHANGEIMAGE", @"Change image"), NSLocalizedString(@"CHANGEPW", @"Change password"), NSLocalizedString(@"CHANGENAME", @"Change name"),  NSLocalizedString(@"PUSHNOTIS", @"Pusnotiser"), NSLocalizedString(@"LOGOUT", @"Logout"), nil];
+                           [self settingUpArray];
                         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"IMAGESAVED", @"Image saved")];
                         [self.table reloadData];
                        }
@@ -159,8 +162,6 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
         }
     }];
 }
-
-
 
 #pragma EXTRAS
 
@@ -202,8 +203,6 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    
     switch (indexPath.section)
     {
         case 0:
@@ -215,6 +214,12 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
             NSString *object2 = [tableArrayD objectAtIndex:indexPath.row];
              NSString *object3 = [tableArrayC objectAtIndex:indexPath.row];
             [(SettingsCell *)cell  configureTextForCell:object :object2 :object3 :indexPath.row];
+            if (indexPath.row == 0 && [PFUser currentUser][@"Profilepic"] != NULL) {
+                UILongPressGestureRecognizer *tapGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(removeImage)];
+                [tapGestureRecognizer setDelegate:self];
+                cell.tag = indexPath.row;
+                [cell addGestureRecognizer:tapGestureRecognizer];
+            }
             
             return cell;
             
@@ -224,6 +229,46 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
     }
     
     
+}
+
+-(void)removeImage {
+    UIAlertController * Lalert=   [UIAlertController
+                                   alertControllerWithTitle:NSLocalizedString(@"REMOVEIMAGE", @"Remove")
+                                   message:NSLocalizedString(@"REMOVEIMAGEDETAILED", @"Are you sure?")
+                                   preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* logout = [UIAlertAction
+                             actionWithTitle:NSLocalizedString(@"REMOVEIMAGE", @"Remove")
+                             style:UIAlertActionStyleDestructive
+                             handler:^(UIAlertAction * action)
+                             {
+                                 PFUser *current = [PFUser currentUser];
+                                 [current removeObjectForKey:@"Profilepic"];
+                                 [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                     if (!error) {
+                                         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"REMOVEDPICTURE", @"Removed")];
+                                         [self settingUpArray];
+                                         [self.table reloadData];
+                                         
+                                     } else {
+                                         [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
+                                         
+                                     }
+                                 }];
+                             }];
+    UIAlertAction* cancel2 = [UIAlertAction
+                              actionWithTitle:NSLocalizedString(@"CANCEL", @"Cancel")
+                              style:UIAlertActionStyleDefault
+                              handler:^(UIAlertAction * action)
+                              {
+                                  [Lalert dismissViewControllerAnimated:YES completion:nil];
+                                  
+                              }];
+    [Lalert addAction:cancel2];
+    [Lalert addAction:logout];
+    [self presentViewController:Lalert animated:YES completion:nil];
+
+
 }
 
 - (UITableViewCell *)customCellForIndex:(NSIndexPath *)indexPath
@@ -334,7 +379,6 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
     [vc.view removeFromSuperview];
     [vc removeFromParentViewController];
 }
-
 
 -(void)dismissView {
     [self dismissViewControllerAnimated:YES completion:nil];

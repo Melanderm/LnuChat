@@ -25,6 +25,7 @@
     color = [UIColorExpanded colorWithHexString:hex];
    
     [self setTitle:_Roomobject[@"RoomName"]];
+
     
     [[UIView appearance] setTintColor:color];
     UIBarButtonItem *newback = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -85,6 +86,7 @@
     
     [self setupMessage];
     
+    NSLog(@"%@", [PFUser currentUser][@"role"]);
 
     
 }
@@ -100,6 +102,8 @@
  We need to keep track of whatQuert it is.
  */
 -(void)getConverstaion {
+    //Updating user data
+    [[PFUser currentUser] fetchInBackground];
 
     PFQuery *query = [PFQuery queryWithClassName:@"Conversations"];
     [query includeKey:@"Author"];
@@ -228,9 +232,12 @@
                  return cell;
             } else {
                 UITableViewCell * cell = [self customCellForIndex2:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.userInteractionEnabled = NO;
                 [(ChatCell *)cell  configureTextForCell:_ChatObj];
+                // If admin, be able to delete other peoples posts
                 if ([ErrorHandler hasAdminRights]) {
+                     cell.userInteractionEnabled = YES;
                     UILongPressGestureRecognizer *tapGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
                     [tapGestureRecognizer setDelegate:self];
                     cell.tag = indexPath.row;
@@ -383,7 +390,7 @@
 -(void)cellTapped:(id)sender {
     UITapGestureRecognizer *tapView = (UITapGestureRecognizer *)sender;
     NSLog(@"Pressed %ld", [tapView.view tag]);
-    
+    PFObject *objectToEdit = [tableArray objectAtIndex:[tapView.view tag]];
     
     UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:NSLocalizedString(@"MENUHEADER", @"What do you want to do")
@@ -413,7 +420,7 @@
                                                           handler:^(UIAlertAction * action)
                                                           {
                                                               
-                                                              [self removePost:[tableArray objectAtIndex:[tapView.view tag]]];
+                                                              [self removePost:objectToEdit];
                                                               [Lalert dismissViewControllerAnimated:YES completion:nil];
                                                           }];
                                  [Lalert addAction:cancel];
@@ -428,7 +435,7 @@
                          handler:^(UIAlertAction * action)
                          {
                              [containerView removeFromSuperview];
-                             [self EditText:[tableArray objectAtIndex:[tapView.view tag]]];
+                             [self EditText:objectToEdit];
                              [textView becomeFirstResponder];
                             [alert dismissViewControllerAnimated:YES completion:nil];
                          }];
@@ -443,7 +450,8 @@
                          }];
     
     [alert addAction:delete];
-    [alert addAction:edit];
+    if (objectToEdit[@"Author"] == [PFUser currentUser])
+        [alert addAction:edit];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
     
