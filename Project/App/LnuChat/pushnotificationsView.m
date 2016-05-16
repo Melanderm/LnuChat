@@ -30,10 +30,12 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setTranslucent:NO];
     
-    PFObject *obj = @{ @"text" : @"Pushnotiser:",
+    
+    NSDictionary *obj = @{ @"text" : @"Om du blir taggad:",
+                           @"color" : _color};
+    NSDictionary *obj2 = @{ @"text" : @"Pushnotiser:",
                      @"color" : _color};    
-    PFObject *obj2 = @{ @"text" : @"Om du blir taggad:",
-                       @"color" : _color};
+
 
     _Array = [[NSMutableArray alloc] initWithObjects:obj, obj2, nil];
     
@@ -76,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _Array.count;
+    return _Array.count-1;
 }
 
 
@@ -90,7 +92,6 @@
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
             cell.accessoryType = UITableViewCellAccessoryNone;
             PFObject *obj = [_Array objectAtIndex:indexPath.row];
-            NSLog(@"obj: %@", obj);
             [(pushnotificationsCell *)cell  configureTextForCell:obj];
             
             return cell;

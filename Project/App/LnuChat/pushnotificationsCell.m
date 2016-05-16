@@ -112,7 +112,12 @@ static CGFloat kStandardLabelHeight = 15.0f;
 
 //-- Cronfiguring cell for the individual index
 - (void)configureTextForCell:(PFObject *)obj {
-    
+    int push = ([[PFUser currentUser][@"reciveTag"] boolValue])? 1 : 0;
+    NSLog(@"on: %@",[PFUser currentUser][@"reciveTag"]);
+    if (push==1)
+        self.Rswitch.on = true;
+    else
+        self.Rswitch.on = false;
     self.PlaceholderImg.backgroundColor = obj[@"color"];
     self.Hlabel.text = [obj[@"text"] uppercaseString];
     self.Hlabel.textColor = obj[@"color"];
@@ -130,7 +135,41 @@ static CGFloat kStandardLabelHeight = 15.0f;
     
     self.Rswitch.tintColor = obj[@"color"];
     self.Rswitch.onTintColor = obj[@"color"];
+    [self.Rswitch addTarget:self action:@selector(didSwitch:) forControlEvents:UIControlEventValueChanged];
     
+}
+
+- (void)didSwitch:(id)sender
+{
+    BOOL state = [sender isOn];
+    NSString *stat = state == YES ? @"YES" : @"NO";
+    
+    if (YES) {
+        PFUser *user = [PFUser currentUser];
+        user[@"reciveTag"] = @NO;
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"NAMESAVED", @"Name saved")];
+                
+                } else
+                {
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"ALERT_WASNOTABLEVTOSAVENAME", @"Wasnt able to save name")];
+            }
+        }];
+    } else {
+        PFUser *user = [PFUser currentUser];
+        user[@"reciveTag"] = @YES;
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"NAMESAVED", @"Name saved")];
+                
+            } else
+            {
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"ALERT_WASNOTABLEVTOSAVENAME", @"Wasnt able to save name")];
+            }
+            }];
+    }
+        
 }
 
 

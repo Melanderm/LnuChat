@@ -74,7 +74,8 @@ Parse.Cloud.define("createUser", function(request, response) {
       user.set("mail", email);
       user.set("password", password);
       user.set("changepassword", true); //Sets up user first time login changing from temporary password.
-
+      user.set("reciveTag", true);
+      
        var patt = new RegExp("@student.lnu.se");
        var res = patt.test(email);
 
@@ -210,10 +211,22 @@ Parse.Cloud.afterSave("Conversations", function(request) {
 
         var query2 = new Parse.Query(Parse.Installation);
 
+        
+        
+        
+        
         //Dont want the author to get its on message, because its already added locally
         query2.notEqualTo("Username", Parse.User.current().get("username"));
-        query2.containedIn("Username", request.object.get("TaggedUsers"));
+        query2.notcontainedIn("Username", request.object.get("TaggedUsers"));
+      ;
        
+    /*    var query = new Parse.Query(Parse.User);
+        query.notcontainedIn("Username", request.object.get("TaggedUsers").get("Username");
+        query.first({
+          success: function (user) {
+            userobject = user;
+          }.then(function () { 
+        query2.notEqualTo("Username", Parse.User.current().get("username")) */
         Parse.Push.send({
             where: query2,
             data: {
@@ -233,7 +246,7 @@ Parse.Cloud.afterSave("Conversations", function(request) {
             }
         });
     }
-
+  // }
 });
 
 

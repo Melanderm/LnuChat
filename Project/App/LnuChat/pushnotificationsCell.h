@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIColorExpanded.h"
 #import "ExtraFucntions.h"
+#import "SVProgressHUD.h"
 
 static NSString *PNCIdentifier = @"PushNotificationCell";
 
