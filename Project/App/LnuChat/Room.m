@@ -62,6 +62,7 @@
     // Setting up parameters for tag
     searchUser = NO;
     UsersTagedArray = [[NSMutableArray alloc] init];
+    UsersTagedArrayTemp = [[NSMutableArray alloc] init];
     
     
     // Recognise tap on tableview to dismiss keyboard
@@ -254,7 +255,7 @@
     
 }
 
-- (UITableViewCell *)customCellForIndex:(NSIndexPath *)indexPath {
+-(UITableViewCell *)customCellForIndex:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     NSString * detailId = DIdentifier;
     cell = [self.table dequeueReusableCellWithIdentifier:detailId];
@@ -267,7 +268,7 @@
     return cell;
 }
 
-- (UITableViewCell *)customCellForIndex2:(NSIndexPath *)indexPath {
+-(UITableViewCell *)customCellForIndex2:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     NSString * detailId = CIdentifier;
     cell = [self.table dequeueReusableCellWithIdentifier:detailId];
@@ -280,7 +281,7 @@
     return cell;
 }
 
-- (UITableViewCell *)customCellForIndex3:(NSIndexPath *)indexPath {
+-(UITableViewCell *)customCellForIndex3:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     NSString * detailId = SCIdentifier;
     cell = [self.table dequeueReusableCellWithIdentifier:detailId];
@@ -293,7 +294,7 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
         CGFloat cellHeight = 0.0;
@@ -313,7 +314,6 @@
 
 }
 
-
 #pragma mark - Other setups
 
 /*
@@ -323,6 +323,17 @@
  Adding it to the array and updates tableView.
  */
 -(void)sendMessage {
+    
+    for (int i=0; i<UsersTagedArray.count; i++) {
+        PFObject *obj = [UsersTagedArrayTemp objectAtIndex:i];
+        NSString *username = obj[@"Username"];
+        NSString *name = obj[@"User"];
+            if ([textView.text containsString:name])
+                NSLog(@"Does Contain");
+            else
+                [UsersTagedArray removeObject:username];
+    }
+
     
     PFObject *Chat = [PFObject objectWithClassName:@"Conversations"];
     Chat[@"Message"] = textView.text;
@@ -358,7 +369,6 @@
             NSIndexPath* ip = [NSIndexPath indexPathForRow:tableArray.count-1 inSection:1];
             [self.table scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionBottom animated:YES];
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"COULDNOTSENDMESSAGE", @"Could not send message :(")];
-
         }
         
     }];
@@ -586,7 +596,7 @@
 }
 
 //Code from Brett Schumann (HP GROWINGTEXTVIEW)
--(void) keyboardWillShow:(NSNotification *)note{
+-(void)keyboardWillShow:(NSNotification *)note{
     // get keyboard size and loctaion
     CGRect keyboardBounds;
     [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
@@ -618,7 +628,7 @@
 }
 
 //Code from Brett Schumann (HP GROWINGTEXTVIEW)
--(void) keyboardWillHide:(NSNotification *)note{
+-(void)keyboardWillHide:(NSNotification *)note{
     NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
     
@@ -730,8 +740,8 @@
     } else
         textView.text = [[@"" stringByAppendingString:notification.userInfo[@"User"]] stringByAppendingString:@" "];
     
-    
     [UsersTagedArray addObject:notification.userInfo[@"Username"]];
+    [UsersTagedArrayTemp addObject:notification.userInfo];
     [self removeTagView];
     
 }
@@ -755,13 +765,11 @@
             [self.table scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }else {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"COULDNOTSENDMESSAGE", @"Could not send message :(")];
-            
         }
         
     }];
     }
-    
-    else if ([notification.userInfo[@"tag"] isEqualToString:@"mentioned"])
+    else if ([notification.userInfo[@"tag"] isEqualToString:@"mentioned"] && ![_Roomobject.objectId isEqualToString:notification.userInfo[@"objectId"]])
         [SVProgressHUD showInfoWithStatus:notification.userInfo[@"message"]];
     
 }

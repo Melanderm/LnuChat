@@ -37,6 +37,7 @@
     
     Boolean searchUser;
     NSMutableArray *UsersTagedArray;
+    NSMutableArray *UsersTagedArrayTemp;
 }
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong)  PFObject *Roomobject;

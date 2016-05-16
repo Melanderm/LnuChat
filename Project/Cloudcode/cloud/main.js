@@ -213,7 +213,7 @@ Parse.Cloud.afterSave("Conversations", function(request) {
         //Dont want the author to get its on message, because its already added locally
         query2.notEqualTo("Username", Parse.User.current().get("username"));
         query2.containedIn("Username", request.object.get("TaggedUsers"));
-
+       
         Parse.Push.send({
             where: query2,
             data: {

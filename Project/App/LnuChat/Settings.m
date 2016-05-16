@@ -33,8 +33,6 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setTranslucent:NO];
  
-    
-
     //LEFT NAVIGATIONBAR BUTTON
     UIImage *image = [UIImage imageNamed:@"cross.png"];
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(dismissView)];
@@ -78,8 +76,7 @@
     [self presentViewController:imagePickerController animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     [self uploadImage:squareCropImageToSideLength(image, 200)];
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -165,8 +162,7 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
 
 #pragma EXTRAS
 
-- (void)setTitle:(NSString *)title
-{
+- (void)setTitle:(NSString *)title {
     [super setTitle:title];
     UILabel *titleView = (UILabel *)self.navigationItem.titleView;
     if (!titleView) {
@@ -184,7 +180,6 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
 #pragma mark - Tablesetup
 
 //------Tableview setup
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -271,8 +266,7 @@ UIImage *squareCropImageToSideLength(UIImage *sourceImage,
 
 }
 
-- (UITableViewCell *)customCellForIndex:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)customCellForIndex:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     NSString * detailId = SeIdentifier;
     cell = [self.table dequeueReusableCellWithIdentifier:detailId];

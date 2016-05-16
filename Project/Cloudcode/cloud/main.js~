@@ -165,10 +165,10 @@ function emailAdress(emailadress, password) {
     var mailgun = require('mailgun');
     mailgun.initialize('mg.swift-it.se', 'key-2c1f928bae591827096c3b2abcddad53');
 
-    var body = 'Ärende: \n\n' + request.params.bodytext + '\n\nFrån: ' + Parse.User.current().get('username') + '\nPlattform: ' + request.params.device;
+    
     mailgun.sendEmail({
-        to: 'support@lnuchat.se',
-        from: "LnuChat",
+        to: emailadress,
+        from: 'LnuChat <noreply@lnuchat.se>',
         subject: title,
         text: body
     }, {
