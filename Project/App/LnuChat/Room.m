@@ -460,7 +460,7 @@
                          }];
     
     [alert addAction:delete];
-    if (objectToEdit[@"Author"] == [PFUser currentUser])
+    if ([objectToEdit[@"Author"][@"username"] isEqualToString:[PFUser currentUser][@"username"]])
         [alert addAction:edit];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
@@ -794,13 +794,6 @@
             } else {
                 [self removeTagView];
             }
-            
-            
-        }
-        else
-        {
-            
-
         }
         
     }];

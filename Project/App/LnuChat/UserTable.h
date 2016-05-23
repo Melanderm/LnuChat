@@ -17,6 +17,12 @@
 
 @property (nonatomic, strong) NSArray *usersArray;
 @property (nonatomic, strong) UIColor *color;
+@property (nonatomic, assign) int whatView;
+@property (nonatomic, strong) NSMutableArray *selectedArray;
+@property (nonatomic, strong) NSMutableArray *usernameArray;
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *roomdescription;
 
 
 @end

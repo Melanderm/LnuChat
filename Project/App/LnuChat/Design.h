@@ -10,6 +10,7 @@
 
 #define k_mainColor [UIColor colorWithRed:230/255.0 green:126/255.0 blue:34/255.0 alpha:1]
 #define k_mainColorNoEnable [UIColor colorWithRed:230/255.0 green:126/255.0 blue:34/255.0 alpha:0.7]
+#define k_mainColorLight [UIColor colorWithRed:230/255.0 green:126/255.0 blue:34/255.0 alpha:0.15]
 #define k_lightGray [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1]
 
 #define k_bigfont [UIFont fontWithName:@"TrebuchetMS-Bold" size:25]

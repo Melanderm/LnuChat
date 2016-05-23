@@ -51,9 +51,6 @@ Parse.Cloud.beforeSave("ChatRooms", function(request, response) {
 });
 
 Parse.Cloud.define("licensText", function(request, response) {
-
-   // var textLicens = "When using this application you are not allowed to use foul language, you need to follow the law, not post copyrighted material.\nShow each other respect.  \nYou also agree that we store your name in a remote database.\n\nCreated by Mikael Melander for Linnaeus university Course 1DV430";
-
     var textLicens = "More text to come...\nYou agree that we store your name in a remote database. According to PUL \n\nCreated by Mikael Melander for Linnaeus university Course 1DV430";
     response.success(textLicens);
 });
@@ -211,22 +208,10 @@ Parse.Cloud.afterSave("Conversations", function(request) {
 
         var query2 = new Parse.Query(Parse.Installation);
 
-        
-        
-        
-        
         //Dont want the author to get its on message, because its already added locally
         query2.notEqualTo("Username", Parse.User.current().get("username"));
         query2.notcontainedIn("Username", request.object.get("TaggedUsers"));
-      ;
-       
-    /*    var query = new Parse.Query(Parse.User);
-        query.notcontainedIn("Username", request.object.get("TaggedUsers").get("Username");
-        query.first({
-          success: function (user) {
-            userobject = user;
-          }.then(function () { 
-        query2.notEqualTo("Username", Parse.User.current().get("username")) */
+      
         Parse.Push.send({
             where: query2,
             data: {
@@ -251,7 +236,8 @@ Parse.Cloud.afterSave("Conversations", function(request) {
 
 
 Parse.Cloud.define("CreateRoom", function(request, response) {
-
+		
+	
     var Room = Parse.Object.extend("ChatRooms");
     var room = new Room();
 
@@ -263,14 +249,52 @@ Parse.Cloud.define("CreateRoom", function(request, response) {
     var acl = new Parse.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
-    acl.setRoleReadAccess("User", true);
-    acl.setRoleReadAccess("Administrator", true);
-    acl.setRoleWriteAccess("Administrator", true);
-    room.setACL(acl);
+
+
+ 
+    if (typeof request.params.InvitedUsers != "undefined") {
+    	
+    	    	 for (var i=0; i<request.params.InvitedUsers.length; i++) {
+    	    	    	  acl.setReadAccess(request.params.InvitedUsers[i], true);
+    	         }
+    	    acl.setReadAccess(Parse.User.current(), true);
+    	    acl.setRoleReadAccess("Administrator", false);
+    	    acl.setRoleWriteAccess("Administrator", false);
+    	    room.setACL(acl);    
+  
+ } else {
+ 	 acl.setRoleReadAccess("User", true);
+ 	 acl.setRoleReadAccess("Administrator", true);
+   	 acl.setRoleWriteAccess("Administrator", true); 
+   	 room.setACL(acl);  
+    }
+    
 
     room.save(null, {
         success: function() {
             response.success("Rummet har blivit skapat");
+           
+           if (typeof request.params.InvitedUsernames != "undefined") {
+           var query = new Parse.Query(Parse.Installation);
+           query.notEqualTo("Username", Parse.User.current().get("username"));
+           query.containedIn("Username", request.params.InvitedUsernames);
+           
+            Parse.Push.send({
+            where: query,
+            data: {
+                alert: Parse.User.current().get("name") + " har bjudit in dig till ett nytt rum!",
+                badge: "Increment",
+                sound: "cheering.caf",
+                tag: "newRoom"
+            }
+        }, {
+            success: function () {
+
+            }, error: function (error) {
+                console.log(error);
+            }
+        });
+             }
         },
         error: function(error) {
             response.error(error);

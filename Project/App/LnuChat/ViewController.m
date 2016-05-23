@@ -16,10 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-    
+
     [self setTitle:@"LnuChat"];
     
     [[UIView appearance] setTintColor:k_mainColor];
@@ -113,21 +110,26 @@
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewcontroller];
         [self presentViewController:nav animated:NO completion:nil];
     } else {
+        [TopicsCell setTableViewWidth:self.view.frame.size.width];
         [self queryRooms];
     }
 }
 
 
 -(void)initialViewLoad {
+
     [self.table reloadData];
     [refreshController endRefreshing];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelay:0];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    self.table.alpha = 1;
-    self.navigationController.navigationBar.alpha = 1;
-    [UIView commitAnimations];
+    if (self.table.alpha == 0) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelay:0];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        self.table.alpha = 1;
+        self.navigationController.navigationBar.alpha = 1;
+        [UIView commitAnimations];
+    }
+
 }
 
 -(void)queryRooms {
@@ -359,7 +361,7 @@
     }];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"Rumsförklaring";
-        textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+        textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         textField.autocorrectionType = UITextAutocorrectionTypeDefault;
     }];
     UIAlertAction* ok = [UIAlertAction
@@ -369,15 +371,38 @@
                          {
                              
                              
-                             [SVProgressHUD show];
+
                              if ([alert textFields].firstObject.text.length > 0 && [alert textFields].lastObject.text.length > 0) {
-                                 [self CreateRoom:[alert textFields].firstObject.text :[alert textFields].lastObject.text];
+                    
+                             UIAlertController * alert2=   [UIAlertController
+                                                           alertControllerWithTitle:@"Typ av rum"
+                                                           message:@"Vill du skapa ett öppet rum för alla eller endast inbjudan?"
+                                                           preferredStyle:UIAlertControllerStyleAlert];
+                             
+                             UIAlertAction* ok2 = [UIAlertAction
+                                                  actionWithTitle:@"Öppet för alla"
+                                                  style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action)
+                                                  {
+                                                      [self CreateRoom:[alert textFields].firstObject.text :[alert textFields].lastObject.text];
+                                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                                }];
+                             UIAlertAction* closed = [UIAlertAction
+                                                      actionWithTitle:@"Endast inbjudan"
+                                                      style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                                      {
+                                                           [self UserQuery:[alert textFields].firstObject.text :[alert textFields].lastObject.text];
+                                                          [alert dismissViewControllerAnimated:YES completion:nil];
+                                                          
+                                                      }];
+                             [alert2 addAction:closed];
+                             [alert2 addAction:ok2];
+                             [self presentViewController:alert2 animated:YES completion:nil];
+                                 
                              } else {
                                  [SVProgressHUD showErrorWithStatus:@"Fälten får inte vara tomma."];
                              }
-                             
-                             
-                             
                          }];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:NSLocalizedString(@"CANCEL", @"Cancel")
@@ -414,6 +439,31 @@
                                 }];
     
 }
+
+-(void)UserQuery:(NSString *)name :(NSString *)description {
+    NSLog(@"Current user: %@", [PFUser currentUser].username);
+    [SVProgressHUD show];
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count != 0) {
+                UserTable *vc = [[UserTable alloc] init];
+                vc.whatView = 1;
+                vc.usersArray = objects;
+                vc.roomdescription = description;
+                vc.name = name;
+                [SVProgressHUD dismiss];
+                [self.navigationController pushViewController:vc animated:YES];
+            } else {
+
+            }
+        }
+        
+    }];
+    
+}
+
 
 
 @end

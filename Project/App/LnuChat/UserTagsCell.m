@@ -108,6 +108,7 @@ static CGFloat kStandardLabelHeight = 15.0f;
 //-- Cronfiguring cell for the individual index
 - (void)configureTextForCell:(PFObject *)obj {
     
+     _color = k_mainColor;
     self.PlaceholderImg.backgroundColor = _color;
     self.Hlabel.text = [obj[@"name"] uppercaseString];
     self.Hlabel.textColor = _color;

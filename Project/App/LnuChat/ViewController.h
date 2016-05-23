@@ -15,6 +15,8 @@
 #import "Room.h"
 #import "Settings.h"
 
+#import "UserTable.h"
+
 
 @interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     
