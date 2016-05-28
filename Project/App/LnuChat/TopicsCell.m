@@ -120,14 +120,25 @@ static CGFloat kStandardLabelHeight = 20.0f;
     NSString *hex  = obj[@"color"];
     UIColor *color = [UIColorExpanded colorWithHexString:hex];
     
+    if (([obj[@"Private"] boolValue])? 1 : 0)
+         self.Hlabel.text = [NSString stringWithFormat:@"%@ (%@)", [obj objectForKey:@"RoomName"], NSLocalizedString(@"PRIVATEROOM", @"")];
+    else
+        self.Hlabel.text = [obj objectForKey:@"RoomName"];
     
-    self.Hlabel.text = [obj objectForKey:@"RoomName"];
     self.Hlabel.textColor = color;
     
     self.Dlabel.text = [obj objectForKey:@"RoomDescription"];
     self.Dlabel.textColor =color;
     self.Dlabel.alpha = 0.8;
-    [self.Dlabel sizeToFit];
+    
+    NSAttributedString *attributedText =
+    [[NSAttributedString alloc] initWithString:self.Dlabel.text
+                                    attributes:@{NSFontAttributeName: k_textfont}];
+    CGRect rect = [attributedText boundingRectWithSize:(CGSize){self.Hlabel.frame.size.width, CGFLOAT_MAX}
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    self.Dlabel.frame = CGRectMake(self.Dlabel.frame.origin.x, self.Dlabel.frame.origin.y, rect.size.width, rect.size.height);
+
     
     self.Onelabel.text = [NSString stringWithFormat:@"%@", [[self.Hlabel.text substringToIndex:2]uppercaseString]];
     

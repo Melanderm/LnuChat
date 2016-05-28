@@ -77,10 +77,44 @@
 "REMOVEIMAGEDETAILED" = "Är du säker att du vill ta bort din profilbild?";
 "REMOVEDPICTURE" = "Profilbild borttagen";
 
+"FORGOTPASSWORD" = "Glömt lösenord?";
+"INVITEUSERS" = "Bjud in";
+"DONE" = "Klar";
+"PUSHNOTIFICATIONS" = "Push notiser";
+"IFYOUGETTAGGED" = "Om du blir taggad: ";
+"PUSHNOTIS" = "Push notiser: ";
 
+"FAILLOADAGREEMENT" = "Kunde inte läsa in licens avtalet. Kan inte genomför registrering just nu";
+"NOACCEPT" = "Jag accepterar inte";
+"ACCEPT" = "Jag accepterar";
+"IACCEPTLICENS" = "Jag accepterar licensen";
+"AREYOUSUREEMAIL" = "Är du säker på att du har skrivit korrekt email?";
 
+"YESEMAIL" = "Ja, de är min email!";
+"TAKEMEBACK" = "Nej, ta mig tillbaka";
+"AREYOUSURE" = "Är du säker?";
+"NOTSURE" = "Jag är säker, ta mig tillbaka";
+"IFNOTACCEPT" = "Om du inte accepterar kan vi inte genomföra din registrering";
 
+"WRONGFORMATEMAIL" = "Fel format. Mailadressen måste sluta med @lnu.se eller @student.lnu.se";
+"WRONGFORMATEMAIL2" = "Fel format. Mailadressen måste matcha & sluta med @lnu.se eller @student.lnu.se";
+"SESSIONEXPIRED" = "Din session har gått ut, du måste logga in igen";
+"HASADMINRIGHTS" = "Har administratör rättigheter";
 
+"CREATEROOM" = "Skapa ett nytt rum";
+"CREATEROOMDETAILED" = "När du skapar ett nytt rum försök att vara tydlig och ge en bra förklaring av vad som skall diskuteras i rummet";
+
+"ROOMPLACEHOLDER" = "Rumsnamn";
+"ROOMDESCRIPTION" = "Rumsförklaring";
+
+"ROOMTYPE" = "Typ av rum";
+"ROOMTYPEDESCRIPTION" = "Vill du skapa ett öppet rum för alla eller endast inbjudan?";
+"OPENFORALL" = "Öppet för alla";
+"ONLYINVITE" = "Privat. Endast inbjudan";
+"FIELDSEMPTY" = "Fälten får inte vara tomma";
+"PRIVATEROOM" = "Privat";
+"INVITE" = "Bjud in";
+"ALREADYINROOM" = "Medlemmar i rummet";
 
 
 

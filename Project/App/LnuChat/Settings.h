@@ -15,7 +15,7 @@
 #import "Login.h"
 #import "pushnotificationsView.h"
 
-@interface Settings : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate> {
+@interface Settings : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate> {
     
     NSMutableArray *tableArray;
     NSMutableArray *tableArrayD;

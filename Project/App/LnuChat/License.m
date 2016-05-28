@@ -37,7 +37,7 @@
                                         
                                         LicenseText.text = result;
                                     } else {
-                                        [SVProgressHUD showErrorWithStatus:@"Could not load licens agreement. Cannot complete registration"];
+                                        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"FAILLOADAGREEMENT", @"")];
                                         [self dismissView];
                                         
                                     }
@@ -60,7 +60,7 @@
     
     
     //Right NAVIGATIONBAR BUTTON
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:@"I do not accept" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewNoAccept)];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NOACCEPT", @"") style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewNoAccept)];
     [rightBtn setTitleTextAttributes:@{   NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:15],
                                           NSForegroundColorAttributeName: [UIColor redColor]
                                           } forState:UIControlStateNormal];
@@ -72,22 +72,22 @@
 
 
     UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Accept"
+                                  alertControllerWithTitle:NSLocalizedString(@"ACCEPT", @"Accept")
                                   message:nil
                                   preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"I accept the licens"
+                         actionWithTitle:NSLocalizedString(@"IACCPTLICENS", @"I accept")
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {
                              
                              UIAlertController * Lalert=   [UIAlertController
-                                                            alertControllerWithTitle:@"Register"
-                                                            message:[NSString stringWithFormat:@"Are you sure this is the correct email? \n%@", _username]
+                                                            alertControllerWithTitle:NSLocalizedString(@"REGISTER", @"")
+                                                            message:[NSString stringWithFormat:[NSString stringWithFormat:@"%@ \n%@", NSLocalizedString(@"AREYOUSUREEMAIL", @""), _username]]
                                                             preferredStyle:UIAlertControllerStyleAlert];
                              
                              UIAlertAction* yesAccept = [UIAlertAction
-                                                      actionWithTitle:@"Yes this is my email"
+                                                      actionWithTitle:NSLocalizedString(@"YESEMAIL", @"")
                                                       style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction * action)
                                                       {
@@ -120,7 +120,7 @@
                                                           
                                                       }];
                              UIAlertAction* cancel2 = [UIAlertAction
-                                                       actionWithTitle:@"No take me back"
+                                                       actionWithTitle:NSLocalizedString(@"TAKEMEBACK", @"")
                                                        style:UIAlertActionStyleDestructive
                                                        handler:^(UIAlertAction * action)
                                                        {
@@ -137,7 +137,7 @@
     
     
     UIAlertAction* cancel = [UIAlertAction
-                             actionWithTitle:@"I do not accept"
+                             actionWithTitle:NSLocalizedString(@"NOACCEPT", @"")
                              style:UIAlertActionStyleDestructive
                              handler:^(UIAlertAction * action)
                              {
@@ -158,12 +158,12 @@
 -(void)dismissViewNoAccept {
     
     UIAlertController * alert=   [UIAlertController
-                                   alertControllerWithTitle:@"Are you sure?"
-                                   message:@"If you do not accept, we cannot complete your registration"
+                                   alertControllerWithTitle:NSLocalizedString(@"AREYOUSURE", @"Are you sure?")
+                                   message:NSLocalizedString(@"IFNOTACCEPT", @"")
                                    preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* noAccept = [UIAlertAction
-                                actionWithTitle:@"I want to accept"
+                                actionWithTitle:NSLocalizedString(@"ACCEPT", @"")
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action)
                                 {
@@ -171,7 +171,7 @@
                                     
                                 }];
     UIAlertAction* cancel = [UIAlertAction
-                              actionWithTitle:@"I'm sure, take me back"
+                              actionWithTitle:NSLocalizedString(@"NOTSURE", @"")
                               style:UIAlertActionStyleDestructive
                               handler:^(UIAlertAction * action)
                               {

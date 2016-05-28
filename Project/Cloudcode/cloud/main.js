@@ -210,7 +210,7 @@ Parse.Cloud.afterSave("Conversations", function(request) {
 
         //Dont want the author to get its on message, because its already added locally
         query2.notEqualTo("Username", Parse.User.current().get("username"));
-        query2.notcontainedIn("Username", request.object.get("TaggedUsers"));
+        query2.containedIn("Username", request.object.get("TaggedUsers"));
       
         Parse.Push.send({
             where: query2,
@@ -231,7 +231,6 @@ Parse.Cloud.afterSave("Conversations", function(request) {
             }
         });
     }
-  // }
 });
 
 
@@ -249,20 +248,25 @@ Parse.Cloud.define("CreateRoom", function(request, response) {
     var acl = new Parse.ACL();
     acl.setPublicReadAccess(false);
     acl.setPublicWriteAccess(false);
-
-
+    acl.setRoleReadAccess("MasterAdministrator", true);
+    acl.setRoleWriteAccess("MasterAdministrator", true); 
  
     if (typeof request.params.InvitedUsers != "undefined") {
-    	
-    	    	 for (var i=0; i<request.params.InvitedUsers.length; i++) {
+    	    	for (var i=0; i<request.params.InvitedUsers.length; i++) {
     	    	    	  acl.setReadAccess(request.params.InvitedUsers[i], true);
     	         }
+            var NewArray = request.params.InvitedUsers.slice();
+            NewArray.push(Parse.User.current().id);
+    	    room.set("Private", true);
+    	    room.set("Users", NewArray);
     	    acl.setReadAccess(Parse.User.current(), true);
     	    acl.setRoleReadAccess("Administrator", false);
     	    acl.setRoleWriteAccess("Administrator", false);
     	    room.setACL(acl);    
-  
- } else {
+    	} 
+    	else 
+    	{
+    	room.set("Private", false);
  	 acl.setRoleReadAccess("User", true);
  	 acl.setRoleReadAccess("Administrator", true);
    	 acl.setRoleWriteAccess("Administrator", true); 
@@ -303,5 +307,68 @@ Parse.Cloud.define("CreateRoom", function(request, response) {
 
 });
 
+Parse.Cloud.define("InviteUser", function(request, response) {
+		
+	
+    /* SETTING UPP ACL FOR ROOM */
+    var acl = new Parse.ACL();
+    acl.setPublicReadAccess(false);
+    acl.setPublicWriteAccess(false);
+    acl.setRoleReadAccess("MasterAdministrator", true);
+    acl.setRoleWriteAccess("MasterAdministrator", true); 
+ 
+    if (typeof request.params.InvitedUsers != "undefined") {
+    	    	for (var i=0; i<request.params.InvitedUsers.length; i++) {
+    	    	    	  acl.setReadAccess(request.params.InvitedUsers[i], true);
+    	         }  
+    	    room.set("Private", true);
+    	    room.set("Users", request.params.InvitedUsers);
+    	    acl.setReadAccess(Parse.User.current(), true);
+    	    acl.setRoleReadAccess("Administrator", false);
+    	    acl.setRoleWriteAccess("Administrator", false);
+    	    room.setACL(acl);    
+    	} 
+    	else 
+    	{
+    	room.set("Private", false);
+ 	 acl.setRoleReadAccess("User", true);
+ 	 acl.setRoleReadAccess("Administrator", true);
+   	 acl.setRoleWriteAccess("Administrator", true); 
+   	 room.setACL(acl);  
+    }
+    
+
+    room.save(null, {
+        success: function() {
+            response.success("Rummet har blivit skapat");
+           
+           if (typeof request.params.InvitedUsernames != "undefined") {
+           var query = new Parse.Query(Parse.Installation);
+           query.notEqualTo("Username", Parse.User.current().get("username"));
+           query.containedIn("Username", request.params.InvitedUsernames);
+           
+            Parse.Push.send({
+            where: query,
+            data: {
+                alert: Parse.User.current().get("name") + " har bjudit in dig till ett nytt rum!",
+                badge: "Increment",
+                sound: "cheering.caf",
+                tag: "newRoom"
+            }
+        }, {
+            success: function () {
+
+            }, error: function (error) {
+                console.log(error);
+            }
+        });
+             }
+        },
+        error: function(error) {
+            response.error(error);
+        }
+    });
+
+});
 
 

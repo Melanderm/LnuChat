@@ -34,6 +34,7 @@
     else if (diff < 3600 && diff > 1800) {
         result = NSLocalizedString(@"1h", @"");
     }
+    
     // BREAKING HERE BECAUSE TRYING TO FIND A GOOD USERFRIENDRLY WAY TO DISPLAY TIME
     /*else if (diff < 7200 && diff > 3600) {
         result = NSLocalizedString(@"2h", @"");
@@ -67,7 +68,10 @@
     }
     else if (diff < 43200 && diff > 39600) {
         result = @"Mindre än 12h sedan";
-    }*/ else if ([DateChecker IsItSameDay:givenDate]) {
+    }*/
+    
+    
+    else if ([DateChecker IsItSameDay:givenDate]) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"HH:mm"];
         [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];

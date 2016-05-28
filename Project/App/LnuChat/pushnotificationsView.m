@@ -21,7 +21,7 @@
     
     _color = [UIColorExpanded colorWithHexString:@"#f1c40f"];
     
-    [self setTitle:@"Pushnotiser"];
+    [self setTitle:NSLocalizedString(@"PUSHNOTIFICATIONS", @"")];
     
     [[UIView appearance] setTintColor:_color];
     UIBarButtonItem *newback = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -31,9 +31,9 @@
     [self.navigationController.navigationBar setTranslucent:NO];
     
     
-    NSDictionary *obj = @{ @"text" : @"Om du blir taggad:",
+    NSDictionary *obj = @{ @"text" : NSLocalizedString(@"IFYOUGETTAGGED", @""),
                            @"color" : _color};
-    NSDictionary *obj2 = @{ @"text" : @"Pushnotiser:",
+    NSDictionary *obj2 = @{ @"text" : NSLocalizedString(@"PUSHNOTIS", @""),
                      @"color" : _color};    
 
 

@@ -29,8 +29,7 @@
     /*
      Setting up rest of loginview.
      */
-    
-    
+
     UILabel *presentation = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, self.view.bounds.size.width-20, 40)];
     presentation.text = @"LnuChat";
     presentation.textAlignment = NSTextAlignmentCenter;
@@ -39,15 +38,12 @@
     [presentation setFont:[UIFont fontWithName:@"TrebuchetMS-Bold" size:40]];
     [self.view addSubview:presentation];
     
-    
-    
     /*
      Setting up "TEXTFIELDDIDCHANGE" for interactive feel of login, activating the login button when format is correct.
      */
     username = [[UITextField alloc] init];
     username.delegate = self;
     username.placeholder = NSLocalizedString(@"USERNAME", @"Username");
-    username.text = @"mm222ev@student.lnu.se";
     username.tintColor = k_mainColor;
     [username setFont:k_textfont];
     username.frame = CGRectMake((self.view.bounds.size.width-240)/2, 120, 240, 30);
@@ -102,11 +98,26 @@
     signup.backgroundColor = [UIColor clearColor];
     [self.view addSubview:signup];
     
+    forgotPassword = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [forgotPassword addTarget:self action:@selector(resetPassword) forControlEvents: UIControlEventTouchDown];
+    [forgotPassword setTitle:NSLocalizedString(@"FORGOTPASSWORD", @"Forgot password?") forState:UIControlStateNormal];
+    forgotPassword.frame = CGRectMake((self.view.bounds.size.width-240)/2, self.view.bounds.size.height-70, 240, 50);
+    [forgotPassword.titleLabel setFont:k_buttonfont];
+    forgotPassword.tintColor = k_mainColor;
+    forgotPassword.enabled = YES;
+    forgotPassword.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:forgotPassword];
+    
+    
+    
+ //  username.text = @"mm222ev@student.lnu.se";
+    
+    
+
     
 }
 -(void)viewWillAppear:(BOOL)animated {
     [self resignFirstResponder];
-    
 }
 
 - (void)TextFieldDidChange:(UITextField *)sender
@@ -141,6 +152,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// Dismiss keyboard on touch outside.
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self view] endEditing:YES];
 }
 
 -(void)LoginButtonPressed {
@@ -249,6 +265,57 @@
     [SVProgressHUD dismiss];
 }
 
+-(void)resetPassword {
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Glömt lösenord"
+                                  message:@"Har du glömt ditt lösenord?\nLåt oss hjälpa dig!\nEmailen är capslock känslig!!!"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Email";
+        textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+        textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+    }];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Send"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             
+                             if ([alert textFields].lastObject.text.length < 0)
+                                 [SVProgressHUD showErrorWithStatus:@"Email field cant be empty"];
+                             else if (![self validateEmail:[alert textFields].lastObject.text])
+                                 [SVProgressHUD showErrorWithStatus:@"That was not an lnu email"];
+                             else {
+                                 [SVProgressHUD show];
+                                 [PFUser requestPasswordResetForEmailInBackground:[alert textFields].lastObject.text block:^(BOOL succeeded,NSError *error)
+                                  {
+                                      if(!error) {
+                                          [SVProgressHUD showSuccessWithStatus:@"We have sent you an email!"];
+                                      } else {
+                                          [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
+                                      }
+                                  }];
+                             }
+                             
+                             
+                             
+                         }];
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:NSLocalizedString(@"CANCEL", @"Cancel")
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+    
+    [alert addAction:cancel];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
 
 
 @end

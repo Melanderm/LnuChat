@@ -192,7 +192,7 @@
             // Logging in user again because session is terminated because of password change!
             [PFUser logInWithUsernameInBackground:[PFUser currentUser].username password:username.text block:^(PFUser *user, NSError *error) {
                 if (!error) {
-                    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Logged in as: %@", [PFUser currentUser][@"name"]]];
+                    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "),[PFUser currentUser][@"name"]]];
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
                 if (error) {

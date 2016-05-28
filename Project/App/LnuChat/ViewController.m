@@ -39,7 +39,7 @@
                                           } forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
-    
+    [TopicsCell setTableViewWidth:self.view.frame.size.width];
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height) style:UITableViewStyleGrouped];
     self.table.backgroundColor = [UIColor whiteColor];
     self.table.delegate = self;
@@ -49,7 +49,7 @@
     [self.table setContentInset:UIEdgeInsetsMake(0, 0, 50, 0)];
     [self.view addSubview:self.table];
     
-    [TopicsCell setTableViewWidth:self.view.frame.size.width];
+
     
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 20 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
@@ -138,6 +138,7 @@
      second time querys database data.
      We need to keep track of whatQuert it is.
      */
+    [[PFUser currentUser] fetchInBackground];
     PFQuery *query = [PFQuery queryWithClassName:@"ChatRooms"];
     [query orderByDescending:@"createdAt"];
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
@@ -174,9 +175,9 @@
 -(void)leftMenuButton {
     NSString *message;
     if ([ErrorHandler hasAdminRights]) {
-        message = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@\nHas admin rights",NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "), [PFUser currentUser][@"name"]]];
+        message = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@\n%@",NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "), [PFUser currentUser][@"name"], NSLocalizedString(@"HASADMINRIGHTS", @"Has admin rights")]];
     }else {
-        message = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@",NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "), [PFUser currentUser][@"name"]]];
+       message = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@",NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "), [PFUser currentUser][@"name"]]];
     }
     
     
@@ -350,17 +351,17 @@
 
 -(void)CreateRoomFirst {
     UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Skapa ett nytt rum"
-                                  message:@"När du skapar ett nytt rum försök att vara tydlig och ge en bra förklaring av vad som skall diskuteras i rummet"
+                                  alertControllerWithTitle:NSLocalizedString(@"CREATEROOM", @"")
+                                  message:NSLocalizedString(@"CREATEROOMDETAILED", @"")
                                   preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"Rumsnamn";
+        textField.placeholder = NSLocalizedString(@"ROOMPLACEHOLDER", @"");
         textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
         textField.autocorrectionType = UITextAutocorrectionTypeDefault;
     }];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"Rumsförklaring";
+        textField.placeholder = NSLocalizedString(@"ROOMDESCRIPTION", @"");
         textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         textField.autocorrectionType = UITextAutocorrectionTypeDefault;
     }];
@@ -375,12 +376,12 @@
                              if ([alert textFields].firstObject.text.length > 0 && [alert textFields].lastObject.text.length > 0) {
                     
                              UIAlertController * alert2=   [UIAlertController
-                                                           alertControllerWithTitle:@"Typ av rum"
-                                                           message:@"Vill du skapa ett öppet rum för alla eller endast inbjudan?"
+                                                           alertControllerWithTitle:NSLocalizedString(@"ROOMTYPE", @"")
+                                                           message:NSLocalizedString(@"ROOMTYPEDESCRIPTEION", @"")
                                                            preferredStyle:UIAlertControllerStyleAlert];
                              
                              UIAlertAction* ok2 = [UIAlertAction
-                                                  actionWithTitle:@"Öppet för alla"
+                                                  actionWithTitle:NSLocalizedString(@"OPENFORALL", @"")
                                                   style:UIAlertActionStyleDefault
                                                   handler:^(UIAlertAction * action)
                                                   {
@@ -388,7 +389,7 @@
                                                       [alert dismissViewControllerAnimated:YES completion:nil];
                                                 }];
                              UIAlertAction* closed = [UIAlertAction
-                                                      actionWithTitle:@"Endast inbjudan"
+                                                      actionWithTitle:NSLocalizedString(@"ONLYINVITE", @"")
                                                       style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction * action)
                                                       {
@@ -401,7 +402,7 @@
                              [self presentViewController:alert2 animated:YES completion:nil];
                                  
                              } else {
-                                 [SVProgressHUD showErrorWithStatus:@"Fälten får inte vara tomma."];
+                                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"FIELDSEMPTY", @"")];
                              }
                          }];
     UIAlertAction* cancel = [UIAlertAction
@@ -463,6 +464,7 @@
     }];
     
 }
+
 
 
 

@@ -18,7 +18,7 @@
  */
 +(BOOL)hasAdminRights {
     
-    if ([[PFUser currentUser][@"role"] isEqualToString:@"Administrator"]) {
+    if ([[PFUser currentUser][@"role"] isEqualToString:@"Administrator"] || [[PFUser currentUser][@"role"] isEqualToString:@"MasterAdministrator"]) {
         return YES;
     } else {
         return NO;
@@ -55,7 +55,7 @@
     
     UIViewController *presentingViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     Login *vc = [[Login alloc] init];
-    [SVProgressHUD showErrorWithStatus:@"Your sessions has expired, please log in again"];
+    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"SESSIONEXPIRED", @"")];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     [presentingViewController presentViewController:nav animated:NO completion:nil];
     

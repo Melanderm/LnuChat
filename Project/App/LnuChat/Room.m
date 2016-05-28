@@ -37,11 +37,16 @@
     
     
     //Right NAVIGATIONBAR BUTTON
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ROOMLEFTNAV", @"Top") style:UIBarButtonItemStyleDone target:self action:@selector(toTheTop)];
+  /*  UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ROOMLEFTNAV", @"Top") style:UIBarButtonItemStyleDone target:self action:@selector(RoomSettings)];
     [rightBtn setTitleTextAttributes:@{   NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:15],
                                           NSForegroundColorAttributeName: color
                                           } forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = rightBtn;
+    self.navigationItem.rightBarButtonItem = rightBtn; */
+    
+    //Right NAVIGATIONBAR BUTTON
+    UIImage *image = [UIImage imageNamed:@"settings.png"];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(RoomSettings)];
+    self.navigationItem.rightBarButtonItem=leftBtn;
     
     
     // Setting up UITableview parameters and cells.
@@ -325,11 +330,12 @@
 -(void)sendMessage {
     
     for (int i=0; i<UsersTagedArray.count; i++) {
+  
         PFObject *obj = [UsersTagedArrayTemp objectAtIndex:i];
         NSString *username = obj[@"Username"];
         NSString *name = obj[@"User"];
             if ([textView.text containsString:name])
-                NSLog(@"Does Contain");
+                NSLog(@"Tagged users: %@", UsersTagedArray);
             else
                 [UsersTagedArray removeObject:username];
     }
@@ -353,6 +359,8 @@
     [postACL setWriteAccess:YES forUser:[PFUser currentUser]];
     [postACL setWriteAccess:YES forRoleWithName:@"Administrator"];
     [postACL setReadAccess:YES forRoleWithName:@"Administrator"];
+    [postACL setWriteAccess:YES forRoleWithName:@"MasterAdministrator"];
+    [postACL setReadAccess:YES forRoleWithName:@"MasterAdministrator"];
     [postACL setWriteAccess:NO forRoleWithName:@"User"];
     [postACL setReadAccess:YES forRoleWithName:@"User"];
     [postACL setPublicReadAccess:NO];
@@ -491,13 +499,8 @@
 -(void)setupMessage {
     
     //Base code from GrowingTextView example, but edited.
-    
     containerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, self.view.bounds.size.width, 40)];
     containerView.backgroundColor =  k_lightGray;
-    
-    UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 1)];
-    line.backgroundColor = color;
-  //  [containerView addSubview:line];
     
     textView = [[HPGrowingTextView alloc] initWithFrame:CGRectMake(6, 3, self.view.bounds.size.width-12, 40)];
     textView.isScrollable = NO;
@@ -538,24 +541,21 @@
     
     //Base code from GrowingTextView example, but edited.
     EditObj = obj;
-    
     containerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, self.view.bounds.size.width, 40)];
     containerView.backgroundColor =  [UIColor whiteColor];
     
-    UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 1)];
-    line.backgroundColor = color;
-  //  [containerView addSubview:line];
-    
-    textView = [[HPGrowingTextView alloc] initWithFrame:CGRectMake(6, 3, self.view.bounds.size.width-75, 40)];
+    textView = [[HPGrowingTextView alloc] initWithFrame:CGRectMake(6, 3, self.view.bounds.size.width-12, 40)];
     textView.isScrollable = NO;
     textView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
+    textView.layer.borderColor = color.CGColor;
+    textView.layer.borderWidth = 0.7f;
     textView.minNumberOfLines = 1;
     textView.maxNumberOfLines = 6;
     textView.returnKeyType = UIReturnKeyDefault;
     textView.keyboardType = UIKeyboardTypeTwitter;
     textView.font = k_textfont;
     textView.delegate = self;
-    textView.backgroundColor = k_lightGray;
+    textView.backgroundColor = [UIColor whiteColor];
     textView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(5, 0, 5, 0);
     textView.text = obj[@"Message"];
     textView.textColor = [UIColor grayColor];
@@ -837,6 +837,85 @@
     [vc willMoveToParentViewController:nil];
     [vc.view removeFromSuperview];
     [vc removeFromParentViewController];
+}
+
+
+-(void)RoomSettings {
+ 
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:_Roomobject[@"RoomName"]
+                                  message:_Roomobject[@"RoomDescription"]
+                                  preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* inv = [UIAlertAction
+                         actionWithTitle:NSLocalizedString(@"INVITE", @"")
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [SVProgressHUD show];
+                             PFQuery *query = [PFUser query];
+                             [query whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId];
+                             [query whereKey:@"objectId" notContainedIn:_Roomobject[@"Users"]];
+                             [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                                 if (!error) {
+                                     if (objects.count != 0) {
+                                         UserTable *vc = [[UserTable alloc] init];
+                                         vc.whatView = 2;
+                                         vc.color = color;
+                                         vc.usersArray = objects;
+                                         [SVProgressHUD dismiss];
+                                         [self.navigationController pushViewController:vc animated:YES];
+                                     } else {
+                                         
+                                     }
+                                 }
+                                 
+                             }];
+
+                             
+                         }];
+    
+    UIAlertAction* allusers = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"ALREADYINROOM", @"")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   [SVProgressHUD show];
+                                   PFQuery *query = [PFUser query];
+                                   [query whereKey:@"objectId" containedIn:_Roomobject[@"Users"]];
+                                   [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                                       if (!error) {
+                                           if (objects.count != 0) {
+                                               UserTable *vc = [[UserTable alloc] init];
+                                               vc.whatView = 3;
+                                               vc.color = color;
+                                               vc.usersArray = objects;
+                                               [SVProgressHUD dismiss];
+                                               [self.navigationController pushViewController:vc animated:YES];
+                                           } else {
+                                               
+                                           }
+                                       }
+                                       
+                                   }];
+
+                               }];
+    
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:NSLocalizedString(@"CANCEL", @"Cancel")
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+    if (_Roomobject[@"Private"] == @YES) {
+    [alert addAction:inv];
+    [alert addAction:allusers];
+    }
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+
 }
 
 

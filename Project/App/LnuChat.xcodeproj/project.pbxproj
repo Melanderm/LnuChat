@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		73006E291CCF812700AF6D09 /* UserTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 73006E281CCF812700AF6D09 /* UserTable.m */; };
+		731904D01CF9A92700DA0ADA /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 731904CF1CF9A92700DA0ADA /* settings@3x.png */; };
 		73302BB61CABDD76006AEE7C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB51CABDD76006AEE7C /* libsqlite3.tbd */; };
 		73302BB81CABDD8C006AEE7C /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB71CABDD8C006AEE7C /* libz.1.tbd */; };
 		73302BBA1CABDD90006AEE7C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB91CABDD90006AEE7C /* SystemConfiguration.framework */; };
@@ -92,6 +93,7 @@
 /* Begin PBXFileReference section */
 		73006E271CCF812700AF6D09 /* UserTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTable.h; sourceTree = "<group>"; };
 		73006E281CCF812700AF6D09 /* UserTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTable.m; sourceTree = "<group>"; };
+		731904CF1CF9A92700DA0ADA /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
 		73302BB51CABDD76006AEE7C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		73302BB71CABDD8C006AEE7C /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
 		73302BB91CABDD90006AEE7C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				736173EF1CBD2E6F00B93907 /* ImagesFrom */,
+				731904CF1CF9A92700DA0ADA /* settings@3x.png */,
 				736173E31CBD2E6B00B93907 /* 76.png */,
 				736173E41CBD2E6C00B93907 /* 120.png */,
 				736173E51CBD2E6C00B93907 /* 152.png */,
@@ -562,6 +565,7 @@
 				736173EC1CBD2E6C00B93907 /* 167.png in Resources */,
 				73F16E491CB1ABDB0036DF61 /* SVProgressHUD.bundle in Resources */,
 				73A0ABF61CAD0107008D86B2 /* Localizable.strings in Resources */,
+				731904D01CF9A92700DA0ADA /* settings@3x.png in Resources */,
 				73B6A77B1CC40293002E4DC6 /* cross@3x.png in Resources */,
 				736173ED1CBD2E6C00B93907 /* 180.png in Resources */,
 				738598251CABCC100089FB26 /* Assets.xcassets in Resources */,

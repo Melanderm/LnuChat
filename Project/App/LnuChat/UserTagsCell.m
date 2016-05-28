@@ -42,9 +42,6 @@ static CGFloat kStandardLabelHeight = 15.0f;
     frame.origin.y = 0;
     self.bk.frame = frame;
     
-    
-    
-    
     [super layoutSubviews];
 }
 
@@ -105,19 +102,20 @@ static CGFloat kStandardLabelHeight = 15.0f;
 }
 
 
+
+
 //-- Cronfiguring cell for the individual index
-- (void)configureTextForCell:(PFObject *)obj {
+- (void)configureTextForCell:(PFObject *)obj :(UIColor *)clr {
     
-     _color = k_mainColor;
+    _color = clr;
+    
+    NSLog(@"%@", _color);
     self.PlaceholderImg.backgroundColor = _color;
     self.Hlabel.text = [obj[@"name"] uppercaseString];
     self.Hlabel.textColor = _color;
     
-
     self.markerImg.frame = CGRectMake(0, 0, 4, 45);
     self.markerImg.backgroundColor = _color;
-    
-
     
     if (obj[@"Profilepic"] != NULL) {
         self.Onelabel.text = @"";

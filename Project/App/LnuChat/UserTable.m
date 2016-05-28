@@ -20,20 +20,44 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.bounces = NO;
+    
+    [self.navigationController.navigationBar setTintColor:_color];
+    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable) name:@"DidUpdateTag" object:nil];
      [UserTagsCell setTableViewWidth:self.view.frame.size.width];
     
     if (_whatView == 1) {
-        [self setTitle:@"Invite users to group"];
+        [self setTitle:NSLocalizedString(@"INVITEUSERS", @"Invite users")];
         self.tableView.bounces = YES;
         _selectedArray = [[NSMutableArray alloc] init];
         _usernameArray = [[NSMutableArray alloc] init];
         //Right NAVIGATIONBAR BUTTON
-        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(CreateRoom)];
+        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"DONE", @"Done") style:UIBarButtonItemStyleDone target:self action:@selector(CreateRoom)];
         [rightBtn setTitleTextAttributes:@{   NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:15],
                                               NSForegroundColorAttributeName: k_mainColor
                                               } forState:UIControlStateNormal];
         self.navigationItem.rightBarButtonItem = rightBtn;
+    }
+    
+    if (_whatView == 2) {
+        [self setTitle:NSLocalizedString(@"INVITEUSERS", @"Invite users")];
+        self.tableView.bounces = YES;
+        _selectedArray = [[NSMutableArray alloc] init];
+        _usernameArray = [[NSMutableArray alloc] init];
+        //Right NAVIGATIONBAR BUTTON
+        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"INVITE", @"Invite") style:UIBarButtonItemStyleDone target:self action:@selector(CreateRoom)];
+        [rightBtn setTitleTextAttributes:@{   NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:15],
+                                              NSForegroundColorAttributeName: _color
+                                              } forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem = rightBtn;
+
+    }
+    if (_whatView == 3) {
+        [self setTitle:NSLocalizedString(@"ALREADYINROOM", @"Members of room")];
+        self.tableView.bounces = YES;
+        _selectedArray = [[NSMutableArray alloc] init];
+        _usernameArray = [[NSMutableArray alloc] init];
+        
     }
    
 }
@@ -68,13 +92,15 @@
         case 0:
         {
             UITableViewCell * cell = [self customCellForIndex:indexPath];
-            if (_whatView == 1)
+            if (_whatView == 1 || _whatView == 2)
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            else
-                cell.selectionStyle = UITableViewCellSelectionStyleGray;
+            else {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.userInteractionEnabled = NO;
+            }
             cell.accessoryType = UITableViewCellAccessoryNone;
             PFObject *object = [_usersArray objectAtIndex:indexPath.row];
-            [(UserTagsCell *)cell  configureTextForCell:object];
+            [(UserTagsCell *)cell  configureTextForCell:object :_color];
             
             
             return cell;
@@ -112,7 +138,7 @@
     NSDictionary* userInfo = @{@"User": obj[@"name"], @"Username": obj[@"username"]};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidChangeText" object:obj userInfo:userInfo];
     }
-    else
+    else if (_whatView == 2)
     {
             PFObject *obj = [_usersArray objectAtIndex:indexPath.row];
         if ([_selectedArray containsObject:obj.objectId]) {
@@ -126,6 +152,10 @@
             [tableView cellForRowAtIndexPath:indexPath].backgroundColor = k_mainColorLight;
         }
     }
+    else if (_whatView == 3)
+    {
+    
+    }
     
 }
 
@@ -137,7 +167,7 @@
         titleView = [[UILabel alloc] initWithFrame:CGRectZero];
         titleView.backgroundColor = [UIColor clearColor];
         [titleView setFont:k_midfont];
-        titleView.textColor = k_mainColor;
+        titleView.textColor = _color;
         titleView.textAlignment = NSTextAlignmentCenter;
         self.navigationItem.titleView = titleView;
     }
@@ -148,7 +178,7 @@
 -(void)CreateRoom {
     [SVProgressHUD show];
     [PFCloud callFunctionInBackground:@"CreateRoom"
-                       withParameters:@{ @"Roomname": [NSString stringWithFormat:@"%@ (%@)", _name, @"Grupp"],
+                       withParameters:@{ @"Roomname": [NSString stringWithFormat:@"%@", _name],
                                          @"RoomDetails": _roomdescription,
                                          @"InvitedUsers": _selectedArray,
                                          @"InvitedUsernames": _usernameArray
@@ -165,5 +195,13 @@
                                 }];
     
 }
+
+-(void)NewInvite {
+    [SVProgressHUD show];
+   // [_objectCurrentRoom saveInBackgroundWithBlock:<#^(BOOL succeeded, NSError * _Nullable error)block#>];
+}
+
+
+
 
 @end

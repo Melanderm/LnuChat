@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *roomdescription;
+@property (nonatomic, strong) PFObject *objectCurrentRoom;
 
 
 @end

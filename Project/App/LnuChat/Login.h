@@ -14,12 +14,13 @@
 #import "ChooseName.h"
 #import "NewPassword.h"
 
-@interface Login : UIViewController <UITextFieldDelegate> {
+@interface Login : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate> {
     
     UITextField *username;
     UITextField *password;
     UIButton *login;
     UIButton *signup;
+    UIButton *forgotPassword;
 }
 
 

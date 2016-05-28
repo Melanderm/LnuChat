@@ -101,8 +101,8 @@
     
     
     
-    username.text = @"mm222ev@student.lnu.se";
-    reenter.text = @"mm222ev@student.lnu.se";
+ //   username.text = @"mm222ev@student.lnu.se";
+ //   reenter.text = @"mm222ev@student.lnu.se";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissView) name:@"DidRegister" object:nil];
 }
@@ -110,6 +110,11 @@
 -(void)viewWillAppear:(BOOL)animated {
     
     
+}
+
+// Dismiss keyboard on touch outside.
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self view] endEditing:YES];
 }
 
 /*
@@ -128,9 +133,9 @@
         regist.enabled = NO;
         regist.backgroundColor = k_mainColorNoEnable;
         if ([username.text isEqualToString:reenter.text])
-            info.text = @"Wrong format \nEmails need to end with @lnu.se or @student.lnu.se";
+            info.text = NSLocalizedString(@"WRONGFORMATEMAIL", @"Email must end with @lnu.se/@student.lnu.se");
         if (![username.text isEqualToString:reenter.text])
-            info.text = @"Wrong format \nEmails need to match & end with @lnu.se or @student.lnu.se";
+            info.text = NSLocalizedString(@"WRONGFORMATEMAIL", @"Email must match and end with @lnu.se/@student.lnu.se");
         info.textColor = [UIColor redColor];
     }
 }

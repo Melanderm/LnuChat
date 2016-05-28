@@ -20,7 +20,8 @@ static NSString *UTCIdentifier = @"UserTagCell";
 + (void)setTableViewWidth:(CGFloat)tableWidth;
 + (id)CellForTableWidth:(CGFloat)width;
 + (CGFloat)cellHeight:(PFObject *)obj;
-- (void)configureTextForCell:(PFObject *)obj;
+-(void)configureTextForCell:(PFObject *)obj :(UIColor *)clr;
+
 
 @property (nonatomic, strong) PFObject *Object;
 @property (nonatomic, strong) UIColor *color;
