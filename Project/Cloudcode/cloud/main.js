@@ -16,38 +16,38 @@ If they are the same, gets a new random color until they are diffrent.
 So rooms that are next to each other cant be the same color. I mean how ugly? :P
  */
 Parse.Cloud.beforeSave("ChatRooms", function(request, response) {
+    if (!request.object.existed()) {
+        Parse.Cloud.useMasterKey();
+        var colors = ["#2ecc71", "#3498db", "#9b59b6", "#34495e", "#1abc9c", "#e67e22", "#ea6153", "#7f8c8d"];
+        var numb = Math.floor((Math.random() * colors.length));
+        var color = colors[numb];
 
-    Parse.Cloud.useMasterKey();
-    var colors = ["#2ecc71", "#3498db", "#9b59b6", "#34495e","#1abc9c", "#e67e22","#ea6153", "#7f8c8d"];
-    var numb = Math.floor((Math.random() * colors.length));
-    var color = colors[numb];
-
-    var Ca = Parse.Object.extend("ChatRooms");
-    var ca = new Ca();
-    var query = new Parse.Query(ca);
-    query.descending("createdAt");
-    query.limit(1);
-    query.find({
-        success:function(object){
+        var Ca = Parse.Object.extend("ChatRooms");
+        var ca = new Ca();
+        var query = new Parse.Query(ca);
+        query.descending("createdAt");
+        query.limit(1);
+        query.find({
+            success: function (object) {
 
 
-            var prev = object[0].get("color");
+                var prev = object[0].get("color");
 
-            while (prev == color) {
-                numb = Math.floor((Math.random() * colors.length));
-                color = colors[numb];
-            }
+                while (prev == color) {
+                    numb = Math.floor((Math.random() * colors.length));
+                    color = colors[numb];
+                }
                 request.object.set("color", color);
                 response.success();
 
 
+            }, error: function () {
+                response.error(error);
+            }
 
-        },error:function(){
-            response.error(error);
-        }
-
-    });
-
+        });
+    } else
+        response.success();
 });
 
 Parse.Cloud.define("licensText", function(request, response) {
@@ -308,67 +308,59 @@ Parse.Cloud.define("CreateRoom", function(request, response) {
 });
 
 Parse.Cloud.define("InviteUser", function(request, response) {
-		
-	
-    /* SETTING UPP ACL FOR ROOM */
-    var acl = new Parse.ACL();
-    acl.setPublicReadAccess(false);
-    acl.setPublicWriteAccess(false);
-    acl.setRoleReadAccess("MasterAdministrator", true);
-    acl.setRoleWriteAccess("MasterAdministrator", true); 
- 
-    if (typeof request.params.InvitedUsers != "undefined") {
-    	    	for (var i=0; i<request.params.InvitedUsers.length; i++) {
-    	    	    	  acl.setReadAccess(request.params.InvitedUsers[i], true);
-    	         }  
-    	    room.set("Private", true);
-    	    room.set("Users", request.params.InvitedUsers);
-    	    acl.setReadAccess(Parse.User.current(), true);
-    	    acl.setRoleReadAccess("Administrator", false);
-    	    acl.setRoleWriteAccess("Administrator", false);
-    	    room.setACL(acl);    
-    	} 
-    	else 
-    	{
-    	room.set("Private", false);
- 	 acl.setRoleReadAccess("User", true);
- 	 acl.setRoleReadAccess("Administrator", true);
-   	 acl.setRoleWriteAccess("Administrator", true); 
-   	 room.setACL(acl);  
-    }
-    
+    Parse.Cloud.useMasterKey();
+    var room;
+    var ChatRoom = Parse.Object.extend("ChatRooms");
+    var query = new Parse.Query(ChatRoom);
+    query.equalTo("objectId", request.params.roomID);
+    query.first({
+        success: function (object) {
+          room = object;
+        }
+    }).then(function () {
+        /* SETTING UPP ACL FOR ROOM */
+        var acl = room.getACL();
+        var roomusers = room.get("Users");
 
-    room.save(null, {
-        success: function() {
-            response.success("Rummet har blivit skapat");
-           
-           if (typeof request.params.InvitedUsernames != "undefined") {
-           var query = new Parse.Query(Parse.Installation);
-           query.notEqualTo("Username", Parse.User.current().get("username"));
-           query.containedIn("Username", request.params.InvitedUsernames);
-           
-            Parse.Push.send({
-            where: query,
-            data: {
-                alert: Parse.User.current().get("name") + " har bjudit in dig till ett nytt rum!",
-                badge: "Increment",
-                sound: "cheering.caf",
-                tag: "newRoom"
-            }
-        }, {
+
+        for (var a = 0; a < request.params.InvitedUsers.length; a++) {
+            roomusers.push(request.params.InvitedUsers[a]);
+            acl.setReadAccess(request.params.InvitedUsers[a], true);
+        }
+
+            room.set("Users", roomusers);
+            room.setACL(acl);
+
+
+        room.save(null, {
             success: function () {
+                response.success("Inbjudan har genomförts");
 
-            }, error: function (error) {
-                console.log(error);
+                    var query = new Parse.Query(Parse.Installation);
+                    query.notEqualTo("Username", Parse.User.current().get("username"));
+                    query.containedIn("Username", request.params.InvitedUsernames);
+
+                    Parse.Push.send({
+                        where: query,
+                        data: {
+                            alert: Parse.User.current().get("name") + " har bjudit in dig till ett privat rum!",
+                            badge: "Increment",
+                            sound: "cheering.caf",
+                            tag: "newRoom"
+                        }
+                    }, {
+                        success: function () {
+
+                        }, error: function (error) {
+                            console.log(error);
+                        }
+                    });
+            },
+            error: function (error) {
+                response.error(error);
             }
         });
-             }
-        },
-        error: function(error) {
-            response.error(error);
-        }
     });
-
 });
 
 

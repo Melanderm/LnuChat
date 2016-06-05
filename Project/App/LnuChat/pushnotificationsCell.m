@@ -118,6 +118,8 @@ static CGFloat kStandardLabelHeight = 15.0f;
         self.Rswitch.on = true;
     else
         self.Rswitch.on = false;
+    
+    
     self.PlaceholderImg.backgroundColor = obj[@"color"];
     self.Hlabel.text = [obj[@"text"] uppercaseString];
     self.Hlabel.textColor = obj[@"color"];
@@ -143,29 +145,31 @@ static CGFloat kStandardLabelHeight = 15.0f;
 {
     BOOL state = [sender isOn];
     NSString *stat = state == YES ? @"YES" : @"NO";
-    
-    if (YES) {
+    NSLog(@"%@", stat);
+    if ([stat isEqualToString:@"NO"]) {
+        NSLog(@"Turning off notifications");
         PFUser *user = [PFUser currentUser];
         user[@"reciveTag"] = @NO;
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"NAMESAVED", @"Name saved")];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"SETTIGSUPDATED", @"Settings updated")];
                 
                 } else
                 {
-                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"ALERT_WASNOTABLEVTOSAVENAME", @"Wasnt able to save name")];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"SOMETHINGWENTWRONG", @"Wasnt able to save setttings")];
             }
         }];
     } else {
+        NSLog(@"Turning on notifications");
         PFUser *user = [PFUser currentUser];
         user[@"reciveTag"] = @YES;
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"NAMESAVED", @"Name saved")];
+                  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"SETTIGSUPDATED", @"Settings updated")];
                 
             } else
             {
-                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"ALERT_WASNOTABLEVTOSAVENAME", @"Wasnt able to save name")];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"SOMETHINGWENTWRONG", @"Wasnt able to save settings")];
             }
             }];
     }

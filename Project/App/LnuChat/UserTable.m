@@ -26,11 +26,14 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable) name:@"DidUpdateTag" object:nil];
      [UserTagsCell setTableViewWidth:self.view.frame.size.width];
     
+    _selectedArray = [[NSMutableArray alloc] init];
+    _usernameArray = [[NSMutableArray alloc] init];
+    
+    
     if (_whatView == 1) {
         [self setTitle:NSLocalizedString(@"INVITEUSERS", @"Invite users")];
         self.tableView.bounces = YES;
-        _selectedArray = [[NSMutableArray alloc] init];
-        _usernameArray = [[NSMutableArray alloc] init];
+      
         //Right NAVIGATIONBAR BUTTON
         UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"DONE", @"Done") style:UIBarButtonItemStyleDone target:self action:@selector(CreateRoom)];
         [rightBtn setTitleTextAttributes:@{   NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:15],
@@ -42,10 +45,9 @@
     if (_whatView == 2) {
         [self setTitle:NSLocalizedString(@"INVITEUSERS", @"Invite users")];
         self.tableView.bounces = YES;
-        _selectedArray = [[NSMutableArray alloc] init];
-        _usernameArray = [[NSMutableArray alloc] init];
+
         //Right NAVIGATIONBAR BUTTON
-        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"INVITE", @"Invite") style:UIBarButtonItemStyleDone target:self action:@selector(CreateRoom)];
+        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"INVITE", @"Invite") style:UIBarButtonItemStyleDone target:self action:@selector(NewInvite)];
         [rightBtn setTitleTextAttributes:@{   NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:15],
                                               NSForegroundColorAttributeName: _color
                                               } forState:UIControlStateNormal];
@@ -55,8 +57,6 @@
     if (_whatView == 3) {
         [self setTitle:NSLocalizedString(@"ALREADYINROOM", @"Members of room")];
         self.tableView.bounces = YES;
-        _selectedArray = [[NSMutableArray alloc] init];
-        _usernameArray = [[NSMutableArray alloc] init];
         
     }
    
@@ -92,9 +92,10 @@
         case 0:
         {
             UITableViewCell * cell = [self customCellForIndex:indexPath];
-            if (_whatView == 1 || _whatView == 2)
+            if (_whatView == 1 || _whatView == 2 || _whatView == 0 ) {
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            else {
+                cell.userInteractionEnabled = YES;
+            }else {
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.userInteractionEnabled = NO;
             }
@@ -132,27 +133,33 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (_whatView != 1) {
+    if (_whatView == 0 ) {
+    NSLog(@"Did trigger: whatView == 0");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     PFObject *obj = [_usersArray objectAtIndex:indexPath.row];
     NSDictionary* userInfo = @{@"User": obj[@"name"], @"Username": obj[@"username"]};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidChangeText" object:obj userInfo:userInfo];
+
     }
-    else if (_whatView == 2)
+    if (_whatView == 2 || _whatView == 1)
     {
-            PFObject *obj = [_usersArray objectAtIndex:indexPath.row];
+       
+        PFObject *obj = [_usersArray objectAtIndex:indexPath.row];
+        
+         NSLog(@"WhatView: %i, adding/removing user: %@", _whatView, obj[@"username"]);
         if ([_selectedArray containsObject:obj.objectId]) {
             [tableView cellForRowAtIndexPath:indexPath].backgroundColor = [UIColor whiteColor];
             [_selectedArray removeObject:obj.objectId];
-             [_usernameArray removeObject:obj[@"username"]];
+            [_usernameArray removeObject:obj[@"username"]];
+            NSLog(@"Removed: %@", _selectedArray);
         } else {
             [_selectedArray addObject:obj.objectId];
             [_usernameArray addObject:obj[@"username"]];
-            NSLog(@"%@", _selectedArray);
-            [tableView cellForRowAtIndexPath:indexPath].backgroundColor = k_mainColorLight;
+            NSLog(@"added: %@", _selectedArray);
+            [tableView cellForRowAtIndexPath:indexPath].backgroundColor = [_color colorWithAlphaComponent:0.3];
         }
     }
-    else if (_whatView == 3)
+    if (_whatView == 3)
     {
     
     }
@@ -198,7 +205,22 @@
 
 -(void)NewInvite {
     [SVProgressHUD show];
-   // [_objectCurrentRoom saveInBackgroundWithBlock:<#^(BOOL succeeded, NSError * _Nullable error)block#>];
+    NSLog(@"Selected user array: %@ \nUsernameArray: %@", _selectedArray, _usernameArray);
+    [PFCloud callFunctionInBackground:@"InviteUser"
+                       withParameters:@{ @"roomID": _objectCurrentRoom.objectId,
+                                         @"InvitedUsers": _selectedArray,
+                                         @"InvitedUsernames": _usernameArray
+                                         }
+                                block:^(NSString *result, NSError *error) {
+                                    if (!error) {
+                                        [SVProgressHUD showSuccessWithStatus:result];
+                                        [self.navigationController popViewControllerAnimated:YES];
+                                        
+                                    } else {
+                                        [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
+                                        
+                                    }
+                                }];
 }
 
 

@@ -115,6 +115,8 @@
 "PRIVATEROOM" = "Privat";
 "INVITE" = "Bjud in";
 "ALREADYINROOM" = "Medlemmar i rummet";
+"SETTIGSUPDATED" = "Inställningarna har blivit uppdaterade";
+"SOMETHINGWENTWRONG" = "Något gick fel, kunde inte uppdatera inställningar";
 
 
 

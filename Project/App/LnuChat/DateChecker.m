@@ -35,7 +35,7 @@
         result = NSLocalizedString(@"1h", @"");
     }
     
-    // BREAKING HERE BECAUSE TRYING TO FIND A GOOD USERFRIENDRLY WAY TO DISPLAY TIME
+    // BREAKING HERE BECAUSE TRYING TO FIND A GOOD USER FRIENDRLY WAY TO DISPLAY TIME
     /*else if (diff < 7200 && diff > 3600) {
         result = NSLocalizedString(@"2h", @"");
     }

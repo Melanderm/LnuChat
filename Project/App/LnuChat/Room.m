@@ -25,6 +25,7 @@
     color = [UIColorExpanded colorWithHexString:hex];
    
     [self setTitle:_Roomobject[@"RoomName"]];
+    [SVProgressHUD setForegroundColor:color];
 
     
     [[UIView appearance] setTintColor:color];
@@ -778,6 +779,8 @@
 -(void)UserQuery:(NSString *)username {
     PFQuery *query = [PFUser query];
     [query whereKey:@"name" containsString:username];
+      if (_Roomobject[@"Private"] == @YES)        // IF private room, only show users with access.
+          [query whereKey:@"objectId" containedIn:_Roomobject[@"Users"]];
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -810,6 +813,7 @@
     UserTable *dst =[[UserTable alloc] init];
     dst.usersArray = obj;
     dst.color = color;
+    dst.whatView = 0;
     dst.view.frame = CGRectMake(0, (self.table.bounds.size.height-(obj.count*45)), self.view.bounds.size.width, (obj.count*45));
     
     dst.view.layer.borderColor = color.CGColor;
@@ -862,6 +866,7 @@
                                          UserTable *vc = [[UserTable alloc] init];
                                          vc.whatView = 2;
                                          vc.color = color;
+                                          vc.objectCurrentRoom = _Roomobject;
                                          vc.usersArray = objects;
                                          [SVProgressHUD dismiss];
                                          [self.navigationController pushViewController:vc animated:YES];
@@ -889,6 +894,7 @@
                                                UserTable *vc = [[UserTable alloc] init];
                                                vc.whatView = 3;
                                                vc.color = color;
+                                               vc.objectCurrentRoom = _Roomobject;
                                                vc.usersArray = objects;
                                                [SVProgressHUD dismiss];
                                                [self.navigationController pushViewController:vc animated:YES];

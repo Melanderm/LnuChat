@@ -76,7 +76,7 @@
                                   message:nil
                                   preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:NSLocalizedString(@"IACCPTLICENS", @"I accept")
+                         actionWithTitle:NSLocalizedString(@"IACCEPTLICENS", @"I accept")
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {

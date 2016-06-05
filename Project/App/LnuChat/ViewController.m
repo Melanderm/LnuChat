@@ -359,11 +359,17 @@
         textField.placeholder = NSLocalizedString(@"ROOMPLACEHOLDER", @"");
         textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
         textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+        [textField addTarget:self
+                      action:@selector(alertTextFieldDidChange:)
+            forControlEvents:UIControlEventEditingChanged];
     }];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = NSLocalizedString(@"ROOMDESCRIPTION", @"");
         textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+        [textField addTarget:self
+                      action:@selector(alertTextFieldDidChange:)
+            forControlEvents:UIControlEventEditingChanged];
     }];
     UIAlertAction* ok = [UIAlertAction
                          actionWithTitle:NSLocalizedString(@"CREATE", @"Create")
@@ -405,6 +411,7 @@
                                  [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"FIELDSEMPTY", @"")];
                              }
                          }];
+    ok.enabled = NO;
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:NSLocalizedString(@"CANCEL", @"Cancel")
                              style:UIAlertActionStyleDefault
@@ -454,6 +461,7 @@
                 vc.usersArray = objects;
                 vc.roomdescription = description;
                 vc.name = name;
+                vc.color = k_mainColor;
                 [SVProgressHUD dismiss];
                 [self.navigationController pushViewController:vc animated:YES];
             } else {
@@ -463,6 +471,16 @@
         
     }];
     
+}
+
+- (void)alertTextFieldDidChange:(UITextField *)sender {
+    UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
+    UIAlertAction *okAction = alertController.actions.lastObject;
+    
+    if (alertController.textFields.firstObject.text.length >= 3 && alertController.textFields.lastObject.text.length >= 3)
+        okAction.enabled = YES;
+    else
+        okAction.enabled = NO;
 }
 
 
