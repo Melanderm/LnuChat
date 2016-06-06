@@ -383,7 +383,7 @@
                     
                              UIAlertController * alert2=   [UIAlertController
                                                            alertControllerWithTitle:NSLocalizedString(@"ROOMTYPE", @"")
-                                                           message:NSLocalizedString(@"ROOMTYPEDESCRIPTEION", @"")
+                                                           message:NSLocalizedString(@"ROOMTYPEDESCRIPTION", @"")
                                                            preferredStyle:UIAlertControllerStyleAlert];
                              
                              UIAlertAction* ok2 = [UIAlertAction
