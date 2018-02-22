@@ -150,7 +150,6 @@
         }
         else
         {
-         
             //Dont want to show error if its because user has no cached data.
             if (whatQuery == 2) {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"ERROR", @"Something went wrong")];
@@ -842,7 +841,6 @@
     [vc.view removeFromSuperview];
     [vc removeFromParentViewController];
 }
-
 
 -(void)RoomSettings {
  

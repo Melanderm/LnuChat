@@ -28,11 +28,12 @@
 
     UIColor *color;
     
+    HPGrowingTextView *textView;
     UIView *containerView;
     UIButton *doneBtn;
     
     PFObject *EditObj;
-    HPGrowingTextView *textView;
+
     
     
     Boolean searchUser;

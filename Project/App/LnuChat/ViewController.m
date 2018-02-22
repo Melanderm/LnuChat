@@ -175,9 +175,9 @@
 -(void)leftMenuButton {
     NSString *message;
     if ([ErrorHandler hasAdminRights]) {
-        message = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@\n%@",NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "), [PFUser currentUser][@"name"], NSLocalizedString(@"HASADMINRIGHTS", @"Has admin rights")]];
+        message = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@ %@\n%@",NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "), [PFUser currentUser][@"name"], NSLocalizedString(@"HASADMINRIGHTS", @"Has admin rights")]];
     }else {
-       message = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@",NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "), [PFUser currentUser][@"name"]]];
+        message = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@ %@",NSLocalizedString(@"LOGGEDINAS", @"Logged in as: "), [PFUser currentUser][@"name"]]];
     }
     
     

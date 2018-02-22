@@ -9,22 +9,6 @@
 /* Begin PBXBuildFile section */
 		73006E291CCF812700AF6D09 /* UserTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 73006E281CCF812700AF6D09 /* UserTable.m */; };
 		731904D01CF9A92700DA0ADA /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 731904CF1CF9A92700DA0ADA /* settings@3x.png */; };
-		73302BB61CABDD76006AEE7C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB51CABDD76006AEE7C /* libsqlite3.tbd */; };
-		73302BB81CABDD8C006AEE7C /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB71CABDD8C006AEE7C /* libz.1.tbd */; };
-		73302BBA1CABDD90006AEE7C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BB91CABDD90006AEE7C /* SystemConfiguration.framework */; };
-		73302BBC1CABDD95006AEE7C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BBB1CABDD95006AEE7C /* StoreKit.framework */; };
-		73302BBE1CABDD99006AEE7C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BBD1CABDD99006AEE7C /* Security.framework */; };
-		73302BC01CABDD9E006AEE7C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BBF1CABDD9E006AEE7C /* QuartzCore.framework */; };
-		73302BC21CABDDA3006AEE7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BC11CABDDA3006AEE7C /* CoreLocation.framework */; };
-		73302BC41CABDDA8006AEE7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BC31CABDDA8006AEE7C /* CoreGraphics.framework */; };
-		73302BC61CABDDAE006AEE7C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BC51CABDDAE006AEE7C /* CFNetwork.framework */; };
-		73302BC81CABDDB8006AEE7C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BC71CABDDB8006AEE7C /* AudioToolbox.framework */; };
-		73302BCF1CABDDF8006AEE7C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BC91CABDDF8006AEE7C /* Bolts.framework */; };
-		73302BD01CABDDF8006AEE7C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCA1CABDDF8006AEE7C /* Parse.framework */; };
-		73302BD11CABDDF8006AEE7C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCB1CABDDF8006AEE7C /* ParseFacebookUtils.framework */; };
-		73302BD21CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCC1CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework */; };
-		73302BD31CABDDF8006AEE7C /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCD1CABDDF8006AEE7C /* ParseTwitterUtils.framework */; };
-		73302BD41CABDDF8006AEE7C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73302BCE1CABDDF8006AEE7C /* ParseUI.framework */; };
 		733083311CD0C0EC00DD1747 /* UserTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 733083301CD0C0EC00DD1747 /* UserTagsCell.m */; };
 		7344097C1CC2D71F0028F650 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344097B1CC2D71F0028F650 /* Settings.m */; };
 		734409851CC2D73C0028F650 /* DetailedRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344097E1CC2D73C0028F650 /* DetailedRoomCell.m */; };
@@ -91,25 +75,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EFABC3F3108FF6EDEDD5259 /* Pods-LnuChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChatUITests/Pods-LnuChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5610171E8C69CA3FB0105671 /* Pods-LnuChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChatTests/Pods-LnuChatTests.release.xcconfig"; sourceTree = "<group>"; };
+		58A881EF3846B6BAFA12245B /* Pods-LnuChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChatTests/Pods-LnuChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		73006E271CCF812700AF6D09 /* UserTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTable.h; sourceTree = "<group>"; };
 		73006E281CCF812700AF6D09 /* UserTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTable.m; sourceTree = "<group>"; };
 		731904CF1CF9A92700DA0ADA /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
-		73302BB51CABDD76006AEE7C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		73302BB71CABDD8C006AEE7C /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
-		73302BB91CABDD90006AEE7C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		73302BBB1CABDD95006AEE7C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		73302BBD1CABDD99006AEE7C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		73302BBF1CABDD9E006AEE7C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		73302BC11CABDDA3006AEE7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		73302BC31CABDDA8006AEE7C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		73302BC51CABDDAE006AEE7C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		73302BC71CABDDB8006AEE7C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		73302BC91CABDDF8006AEE7C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		73302BCA1CABDDF8006AEE7C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		73302BCB1CABDDF8006AEE7C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		73302BCC1CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
-		73302BCD1CABDDF8006AEE7C /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseTwitterUtils.framework; sourceTree = "<group>"; };
-		73302BCE1CABDDF8006AEE7C /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		7330832F1CD0C0EC00DD1747 /* UserTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTagsCell.h; sourceTree = "<group>"; };
 		733083301CD0C0EC00DD1747 /* UserTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTagsCell.m; sourceTree = "<group>"; };
 		7344097A1CC2D71F0028F650 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
@@ -190,6 +161,9 @@
 		73F16E501CB1AC3B0036DF61 /* NewPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPassword.m; sourceTree = "<group>"; };
 		73F16E511CB1AC3B0036DF61 /* License.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = License.h; sourceTree = "<group>"; };
 		73F16E521CB1AC3B0036DF61 /* License.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = License.m; sourceTree = "<group>"; };
+		B4341477D7D65E5B14406C24 /* Pods-LnuChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChatUITests/Pods-LnuChatUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D0EA9040ADF62DF769AA7EDC /* Pods-LnuChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChat/Pods-LnuChat.debug.xcconfig"; sourceTree = "<group>"; };
+		DC20865FDC0A0C00AA354259 /* Pods-LnuChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChat/Pods-LnuChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,22 +171,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73302BC81CABDDB8006AEE7C /* AudioToolbox.framework in Frameworks */,
-				73302BC61CABDDAE006AEE7C /* CFNetwork.framework in Frameworks */,
-				73302BD21CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework in Frameworks */,
-				73302BC41CABDDA8006AEE7C /* CoreGraphics.framework in Frameworks */,
-				73302BD31CABDDF8006AEE7C /* ParseTwitterUtils.framework in Frameworks */,
-				73302BC21CABDDA3006AEE7C /* CoreLocation.framework in Frameworks */,
-				73302BD41CABDDF8006AEE7C /* ParseUI.framework in Frameworks */,
-				73302BC01CABDD9E006AEE7C /* QuartzCore.framework in Frameworks */,
-				73302BBE1CABDD99006AEE7C /* Security.framework in Frameworks */,
-				73302BBC1CABDD95006AEE7C /* StoreKit.framework in Frameworks */,
-				73302BBA1CABDD90006AEE7C /* SystemConfiguration.framework in Frameworks */,
-				73302BCF1CABDDF8006AEE7C /* Bolts.framework in Frameworks */,
-				73302BB81CABDD8C006AEE7C /* libz.1.tbd in Frameworks */,
-				73302BD01CABDDF8006AEE7C /* Parse.framework in Frameworks */,
-				73302BB61CABDD76006AEE7C /* libsqlite3.tbd in Frameworks */,
-				73302BD11CABDDF8006AEE7C /* ParseFacebookUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,25 +191,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		310B8E513077D366F25A1C9E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0EA9040ADF62DF769AA7EDC /* Pods-LnuChat.debug.xcconfig */,
+				DC20865FDC0A0C00AA354259 /* Pods-LnuChat.release.xcconfig */,
+				58A881EF3846B6BAFA12245B /* Pods-LnuChatTests.debug.xcconfig */,
+				5610171E8C69CA3FB0105671 /* Pods-LnuChatTests.release.xcconfig */,
+				0EFABC3F3108FF6EDEDD5259 /* Pods-LnuChatUITests.debug.xcconfig */,
+				B4341477D7D65E5B14406C24 /* Pods-LnuChatUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		73302BB41CABDD62006AEE7C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				73302BC91CABDDF8006AEE7C /* Bolts.framework */,
-				73302BCA1CABDDF8006AEE7C /* Parse.framework */,
-				73302BCB1CABDDF8006AEE7C /* ParseFacebookUtils.framework */,
-				73302BCC1CABDDF8006AEE7C /* ParseFacebookUtilsV4.framework */,
-				73302BCD1CABDDF8006AEE7C /* ParseTwitterUtils.framework */,
-				73302BCE1CABDDF8006AEE7C /* ParseUI.framework */,
-				73302BC71CABDDB8006AEE7C /* AudioToolbox.framework */,
-				73302BC51CABDDAE006AEE7C /* CFNetwork.framework */,
-				73302BC31CABDDA8006AEE7C /* CoreGraphics.framework */,
-				73302BC11CABDDA3006AEE7C /* CoreLocation.framework */,
-				73302BBF1CABDD9E006AEE7C /* QuartzCore.framework */,
-				73302BBD1CABDD99006AEE7C /* Security.framework */,
-				73302BBB1CABDD95006AEE7C /* StoreKit.framework */,
-				73302BB91CABDD90006AEE7C /* SystemConfiguration.framework */,
-				73302BB71CABDD8C006AEE7C /* libz.1.tbd */,
-				73302BB51CABDD76006AEE7C /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -331,6 +286,7 @@
 				7385983C1CABCC100089FB26 /* LnuChatUITests */,
 				738598161CABCC100089FB26 /* Products */,
 				73302BB41CABDD62006AEE7C /* Frameworks */,
+				310B8E513077D366F25A1C9E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -350,14 +306,9 @@
 				736173DE1CBD2D6500B93907 /* Cell */,
 				73D435BD1CAC888700785AAF /* Extras */,
 				73D435B91CAC883D00785AAF /* User */,
+				8C472C5F203EC66100A90BF6 /* VC */,
 				7385981B1CABCC100089FB26 /* AppDelegate.h */,
 				7385981C1CABCC100089FB26 /* AppDelegate.m */,
-				7385981E1CABCC100089FB26 /* ViewController.h */,
-				7385981F1CABCC100089FB26 /* ViewController.m */,
-				734409891CC2D7490028F650 /* Room.h */,
-				7344098A1CC2D7490028F650 /* Room.m */,
-				73006E271CCF812700AF6D09 /* UserTable.h */,
-				73006E281CCF812700AF6D09 /* UserTable.m */,
 				738598211CABCC100089FB26 /* Main.storyboard */,
 				738598241CABCC100089FB26 /* Assets.xcassets */,
 				738598261CABCC100089FB26 /* LaunchScreen.storyboard */,
@@ -450,6 +401,19 @@
 			name = SVProgressHud;
 			sourceTree = "<group>";
 		};
+		8C472C5F203EC66100A90BF6 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				7385981E1CABCC100089FB26 /* ViewController.h */,
+				7385981F1CABCC100089FB26 /* ViewController.m */,
+				734409891CC2D7490028F650 /* Room.h */,
+				7344098A1CC2D7490028F650 /* Room.m */,
+				73006E271CCF812700AF6D09 /* UserTable.h */,
+				73006E281CCF812700AF6D09 /* UserTable.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -457,9 +421,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 738598421CABCC100089FB26 /* Build configuration list for PBXNativeTarget "LnuChat" */;
 			buildPhases = (
+				A4DEACF688AFA05DA5BDE8E2 /* [CP] Check Pods Manifest.lock */,
 				738598111CABCC100089FB26 /* Sources */,
 				738598121CABCC100089FB26 /* Frameworks */,
 				738598131CABCC100089FB26 /* Resources */,
+				1594656074517CB5CD31519A /* [CP] Embed Pods Frameworks */,
+				10C6BEE42B794E3A4A7F0A72 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -474,9 +441,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 738598451CABCC100089FB26 /* Build configuration list for PBXNativeTarget "LnuChatTests" */;
 			buildPhases = (
+				B5858381F88F5625CB6F89DE /* [CP] Check Pods Manifest.lock */,
 				7385982A1CABCC100089FB26 /* Sources */,
 				7385982B1CABCC100089FB26 /* Frameworks */,
 				7385982C1CABCC100089FB26 /* Resources */,
+				2E604D96D7FA7B65FD5122F9 /* [CP] Embed Pods Frameworks */,
+				9B2CF87A3B88FC4120F9002E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -492,9 +462,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 738598481CABCC100089FB26 /* Build configuration list for PBXNativeTarget "LnuChatUITests" */;
 			buildPhases = (
+				BF341CD4FC55FFFB1C88B0ED /* [CP] Check Pods Manifest.lock */,
 				738598351CABCC100089FB26 /* Sources */,
 				738598361CABCC100089FB26 /* Frameworks */,
 				738598371CABCC100089FB26 /* Resources */,
+				AC263BE2E505B6803E83A479 /* [CP] Embed Pods Frameworks */,
+				ABEF1F62BE504064AFD3EDDC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -518,6 +491,7 @@
 					738598141CABCC100089FB26 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 9857A47KFY;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -594,6 +568,156 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10C6BEE42B794E3A4A7F0A72 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LnuChat/Pods-LnuChat-resources.sh",
+				"${PODS_ROOT}/Parse/Parse/Resources/en.lproj",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LnuChat/Pods-LnuChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1594656074517CB5CD31519A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LnuChat/Pods-LnuChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E604D96D7FA7B65FD5122F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LnuChatTests/Pods-LnuChatTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B2CF87A3B88FC4120F9002E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LnuChatTests/Pods-LnuChatTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4DEACF688AFA05DA5BDE8E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LnuChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABEF1F62BE504064AFD3EDDC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LnuChatUITests/Pods-LnuChatUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC263BE2E505B6803E83A479 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LnuChatUITests/Pods-LnuChatUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5858381F88F5625CB6F89DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LnuChatTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF341CD4FC55FFFB1C88B0ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LnuChatUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		738598111CABCC100089FB26 /* Sources */ = {
@@ -776,9 +900,12 @@
 		};
 		738598431CABCC100089FB26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0EA9040ADF62DF769AA7EDC /* Pods-LnuChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mikael Melander (TLSEHCAM5D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -787,15 +914,19 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikaelmelander.lnuchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "63f7c21b-0221-4748-aaba-87c1da780ea5";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		738598441CABCC100089FB26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC20865FDC0A0C00AA354259 /* Pods-LnuChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mikael Melander (TLSEHCAM5D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -804,12 +935,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikaelmelander.lnuchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "63f7c21b-0221-4748-aaba-87c1da780ea5";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
 		738598461CABCC100089FB26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58A881EF3846B6BAFA12245B /* Pods-LnuChatTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LnuChatTests/Info.plist;
@@ -822,6 +955,7 @@
 		};
 		738598471CABCC100089FB26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5610171E8C69CA3FB0105671 /* Pods-LnuChatTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LnuChatTests/Info.plist;
@@ -834,6 +968,7 @@
 		};
 		738598491CABCC100089FB26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EFABC3F3108FF6EDEDD5259 /* Pods-LnuChatUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = LnuChatUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -845,6 +980,7 @@
 		};
 		7385984A1CABCC100089FB26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4341477D7D65E5B14406C24 /* Pods-LnuChatUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = LnuChatUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

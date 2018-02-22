@@ -1,6 +1,12 @@
-# mm222ev-project
+# Lnu Chat
 
-[Wiki](https://github.com/1dv430/mm222ev-project/wiki)
+### För kursen Individuellt mjukvaruutvecklingsprojekt
 
-Projektkatalog tillhörande Mikael Melander, UDM2015
-For course 1DV430
+
+#### Parse som jag använde för detta existerar inte längre, så back-end:en fungerar ej.
+
+Detta är även ganska gammal kod så ta gärna de i hänsyn.
+
+Eftersom de inte går att använda appen och vi i kursen skulle göra en enkel presentations video av hur den fungerade skickar jag med den:
+
+https://www.youtube.com/watch?v=tNYoQbD_pdQ&feature=youtu.be
