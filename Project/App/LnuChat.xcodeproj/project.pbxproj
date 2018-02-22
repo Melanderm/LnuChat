@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		73006E291CCF812700AF6D09 /* UserTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 73006E281CCF812700AF6D09 /* UserTable.m */; };
-		731904D01CF9A92700DA0ADA /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 731904CF1CF9A92700DA0ADA /* settings@3x.png */; };
 		733083311CD0C0EC00DD1747 /* UserTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 733083301CD0C0EC00DD1747 /* UserTagsCell.m */; };
 		7344097C1CC2D71F0028F650 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344097B1CC2D71F0028F650 /* Settings.m */; };
 		734409851CC2D73C0028F650 /* DetailedRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7344097E1CC2D73C0028F650 /* DetailedRoomCell.m */; };
@@ -25,13 +24,6 @@
 		736173DA1CBD2CCC00B93907 /* ErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 736173D91CBD2CCC00B93907 /* ErrorHandler.m */; };
 		736173DD1CBD2D5E00B93907 /* TopicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 736173DC1CBD2D5E00B93907 /* TopicsCell.m */; };
 		736173E11CBD2DB900B93907 /* UIColorExpanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 736173E01CBD2DB900B93907 /* UIColorExpanded.m */; };
-		736173E91CBD2E6C00B93907 /* 76.png in Resources */ = {isa = PBXBuildFile; fileRef = 736173E31CBD2E6B00B93907 /* 76.png */; };
-		736173EA1CBD2E6C00B93907 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 736173E41CBD2E6C00B93907 /* 120.png */; };
-		736173EB1CBD2E6C00B93907 /* 152.png in Resources */ = {isa = PBXBuildFile; fileRef = 736173E51CBD2E6C00B93907 /* 152.png */; };
-		736173EC1CBD2E6C00B93907 /* 167.png in Resources */ = {isa = PBXBuildFile; fileRef = 736173E61CBD2E6C00B93907 /* 167.png */; };
-		736173ED1CBD2E6C00B93907 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 736173E71CBD2E6C00B93907 /* 180.png */; };
-		736173EE1CBD2E6C00B93907 /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 736173E81CBD2E6C00B93907 /* menu@3x.png */; };
-		736173F01CBD2E6F00B93907 /* ImagesFrom in Resources */ = {isa = PBXBuildFile; fileRef = 736173EF1CBD2E6F00B93907 /* ImagesFrom */; };
 		736A1D481CD27660003F7A27 /* pushnotificationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 736A1D471CD27660003F7A27 /* pushnotificationsView.m */; };
 		736A1D4D1CD27742003F7A27 /* pushnotificationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 736A1D4C1CD27742003F7A27 /* pushnotificationsCell.m */; };
 		7385981A1CABCC100089FB26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 738598191CABCC100089FB26 /* main.m */; };
@@ -44,7 +36,6 @@
 		7385983E1CABCC100089FB26 /* LnuChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7385983D1CABCC100089FB26 /* LnuChatUITests.m */; };
 		73A0ABF31CAD000B008D86B2 /* Register.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A0ABF21CAD000B008D86B2 /* Register.m */; };
 		73A0ABF61CAD0107008D86B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73A0ABF81CAD0107008D86B2 /* Localizable.strings */; };
-		73B6A77B1CC40293002E4DC6 /* cross@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B6A77A1CC40293002E4DC6 /* cross@3x.png */; };
 		73D435BC1CAC884F00785AAF /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D435BB1CAC884F00785AAF /* Login.m */; };
 		73D435C01CAC889700785AAF /* Design.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D435BF1CAC889700785AAF /* Design.m */; };
 		73F16E471CB1ABDB0036DF61 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 73F16E3E1CB1ABDB0036DF61 /* LICENSE.txt */; };
@@ -55,6 +46,15 @@
 		73F16E4E1CB1AC360036DF61 /* ChooseName.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F16E4D1CB1AC360036DF61 /* ChooseName.m */; };
 		73F16E531CB1AC3B0036DF61 /* NewPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F16E501CB1AC3B0036DF61 /* NewPassword.m */; };
 		73F16E541CB1AC3B0036DF61 /* License.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F16E521CB1AC3B0036DF61 /* License.m */; };
+		8C472C67203ED6B400A90BF6 /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C63203ED6B400A90BF6 /* menu@3x.png */; };
+		8C472C68203ED6B400A90BF6 /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C64203ED6B400A90BF6 /* settings@3x.png */; };
+		8C472C69203ED6B400A90BF6 /* cross@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C65203ED6B400A90BF6 /* cross@3x.png */; };
+		8C472C6A203ED6B400A90BF6 /* ImagesFrom in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C66203ED6B400A90BF6 /* ImagesFrom */; };
+		8C472C70203ED6B900A90BF6 /* 76.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C6B203ED6B900A90BF6 /* 76.png */; };
+		8C472C71203ED6B900A90BF6 /* 167.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C6C203ED6B900A90BF6 /* 167.png */; };
+		8C472C72203ED6B900A90BF6 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C6D203ED6B900A90BF6 /* 180.png */; };
+		8C472C73203ED6B900A90BF6 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C6E203ED6B900A90BF6 /* 120.png */; };
+		8C472C74203ED6B900A90BF6 /* 152.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C472C6F203ED6B900A90BF6 /* 152.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +80,6 @@
 		58A881EF3846B6BAFA12245B /* Pods-LnuChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChatTests/Pods-LnuChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		73006E271CCF812700AF6D09 /* UserTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTable.h; sourceTree = "<group>"; };
 		73006E281CCF812700AF6D09 /* UserTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTable.m; sourceTree = "<group>"; };
-		731904CF1CF9A92700DA0ADA /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
 		7330832F1CD0C0EC00DD1747 /* UserTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTagsCell.h; sourceTree = "<group>"; };
 		733083301CD0C0EC00DD1747 /* UserTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTagsCell.m; sourceTree = "<group>"; };
 		7344097A1CC2D71F0028F650 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
@@ -111,13 +110,6 @@
 		736173DC1CBD2D5E00B93907 /* TopicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicsCell.m; sourceTree = "<group>"; };
 		736173DF1CBD2DB900B93907 /* UIColorExpanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorExpanded.h; sourceTree = "<group>"; };
 		736173E01CBD2DB900B93907 /* UIColorExpanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorExpanded.m; sourceTree = "<group>"; };
-		736173E31CBD2E6B00B93907 /* 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76.png; sourceTree = "<group>"; };
-		736173E41CBD2E6C00B93907 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
-		736173E51CBD2E6C00B93907 /* 152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 152.png; sourceTree = "<group>"; };
-		736173E61CBD2E6C00B93907 /* 167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 167.png; sourceTree = "<group>"; };
-		736173E71CBD2E6C00B93907 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 180.png; sourceTree = "<group>"; };
-		736173E81CBD2E6C00B93907 /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@3x.png"; sourceTree = "<group>"; };
-		736173EF1CBD2E6F00B93907 /* ImagesFrom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ImagesFrom; sourceTree = "<group>"; };
 		736A1D461CD27660003F7A27 /* pushnotificationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pushnotificationsView.h; sourceTree = "<group>"; };
 		736A1D471CD27660003F7A27 /* pushnotificationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pushnotificationsView.m; sourceTree = "<group>"; };
 		736A1D4B1CD27742003F7A27 /* pushnotificationsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pushnotificationsCell.h; sourceTree = "<group>"; };
@@ -141,7 +133,6 @@
 		73A0ABF11CAD000B008D86B2 /* Register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Register.h; sourceTree = "<group>"; };
 		73A0ABF21CAD000B008D86B2 /* Register.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Register.m; sourceTree = "<group>"; };
 		73A0ABF71CAD0107008D86B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		73B6A77A1CC40293002E4DC6 /* cross@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@3x.png"; sourceTree = "<group>"; };
 		73D435BA1CAC884F00785AAF /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
 		73D435BB1CAC884F00785AAF /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
 		73D435BE1CAC889700785AAF /* Design.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Design.h; sourceTree = "<group>"; };
@@ -161,6 +152,15 @@
 		73F16E501CB1AC3B0036DF61 /* NewPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPassword.m; sourceTree = "<group>"; };
 		73F16E511CB1AC3B0036DF61 /* License.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = License.h; sourceTree = "<group>"; };
 		73F16E521CB1AC3B0036DF61 /* License.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = License.m; sourceTree = "<group>"; };
+		8C472C63203ED6B400A90BF6 /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@3x.png"; path = "icons/menu@3x.png"; sourceTree = "<group>"; };
+		8C472C64203ED6B400A90BF6 /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "icons/settings@3x.png"; sourceTree = "<group>"; };
+		8C472C65203ED6B400A90BF6 /* cross@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cross@3x.png"; path = "icons/cross@3x.png"; sourceTree = "<group>"; };
+		8C472C66203ED6B400A90BF6 /* ImagesFrom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ImagesFrom; path = icons/ImagesFrom; sourceTree = "<group>"; };
+		8C472C6B203ED6B900A90BF6 /* 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 76.png; path = "App icons/76.png"; sourceTree = "<group>"; };
+		8C472C6C203ED6B900A90BF6 /* 167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 167.png; path = "App icons/167.png"; sourceTree = "<group>"; };
+		8C472C6D203ED6B900A90BF6 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 180.png; path = "App icons/180.png"; sourceTree = "<group>"; };
+		8C472C6E203ED6B900A90BF6 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 120.png; path = "App icons/120.png"; sourceTree = "<group>"; };
+		8C472C6F203ED6B900A90BF6 /* 152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 152.png; path = "App icons/152.png"; sourceTree = "<group>"; };
 		B4341477D7D65E5B14406C24 /* Pods-LnuChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChatUITests/Pods-LnuChatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D0EA9040ADF62DF769AA7EDC /* Pods-LnuChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChat/Pods-LnuChat.debug.xcconfig"; sourceTree = "<group>"; };
 		DC20865FDC0A0C00AA354259 /* Pods-LnuChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LnuChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-LnuChat/Pods-LnuChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -238,15 +238,15 @@
 		736173E21CBD2E6200B93907 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				736173EF1CBD2E6F00B93907 /* ImagesFrom */,
-				731904CF1CF9A92700DA0ADA /* settings@3x.png */,
-				736173E31CBD2E6B00B93907 /* 76.png */,
-				736173E41CBD2E6C00B93907 /* 120.png */,
-				736173E51CBD2E6C00B93907 /* 152.png */,
-				736173E61CBD2E6C00B93907 /* 167.png */,
-				736173E71CBD2E6C00B93907 /* 180.png */,
-				73B6A77A1CC40293002E4DC6 /* cross@3x.png */,
-				736173E81CBD2E6C00B93907 /* menu@3x.png */,
+				8C472C6B203ED6B900A90BF6 /* 76.png */,
+				8C472C6E203ED6B900A90BF6 /* 120.png */,
+				8C472C6F203ED6B900A90BF6 /* 152.png */,
+				8C472C6C203ED6B900A90BF6 /* 167.png */,
+				8C472C6D203ED6B900A90BF6 /* 180.png */,
+				8C472C65203ED6B400A90BF6 /* cross@3x.png */,
+				8C472C66203ED6B400A90BF6 /* ImagesFrom */,
+				8C472C63203ED6B400A90BF6 /* menu@3x.png */,
+				8C472C64203ED6B400A90BF6 /* settings@3x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -534,22 +534,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				736173EB1CBD2E6C00B93907 /* 152.png in Resources */,
+				8C472C69203ED6B400A90BF6 /* cross@3x.png in Resources */,
 				738598281CABCC100089FB26 /* LaunchScreen.storyboard in Resources */,
-				736173EC1CBD2E6C00B93907 /* 167.png in Resources */,
+				8C472C74203ED6B900A90BF6 /* 152.png in Resources */,
+				8C472C71203ED6B900A90BF6 /* 167.png in Resources */,
+				8C472C70203ED6B900A90BF6 /* 76.png in Resources */,
+				8C472C68203ED6B400A90BF6 /* settings@3x.png in Resources */,
 				73F16E491CB1ABDB0036DF61 /* SVProgressHUD.bundle in Resources */,
 				73A0ABF61CAD0107008D86B2 /* Localizable.strings in Resources */,
-				731904D01CF9A92700DA0ADA /* settings@3x.png in Resources */,
-				73B6A77B1CC40293002E4DC6 /* cross@3x.png in Resources */,
-				736173ED1CBD2E6C00B93907 /* 180.png in Resources */,
 				738598251CABCC100089FB26 /* Assets.xcassets in Resources */,
 				73F16E471CB1ABDB0036DF61 /* LICENSE.txt in Resources */,
-				736173EA1CBD2E6C00B93907 /* 120.png in Resources */,
-				736173E91CBD2E6C00B93907 /* 76.png in Resources */,
-				736173EE1CBD2E6C00B93907 /* menu@3x.png in Resources */,
+				8C472C72203ED6B900A90BF6 /* 180.png in Resources */,
 				738598231CABCC100089FB26 /* Main.storyboard in Resources */,
+				8C472C67203ED6B400A90BF6 /* menu@3x.png in Resources */,
+				8C472C73203ED6B900A90BF6 /* 120.png in Resources */,
 				7344099A1CC2D7BD0028F650 /* _LICENSE.txt in Resources */,
-				736173F01CBD2E6F00B93907 /* ImagesFrom in Resources */,
+				8C472C6A203ED6B400A90BF6 /* ImagesFrom in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
